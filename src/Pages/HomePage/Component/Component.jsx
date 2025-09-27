@@ -24,7 +24,7 @@ function Navbar({ location, units, setUnits }) {
           <div className={styles.navActions}>
             <div className={styles.locationTag}>
               <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              <span>{location.city}</span>
+              <span>{location.name}</span>
             </div>
     
             <div className={styles.unitToggle}>
@@ -55,7 +55,7 @@ function SearchBox({ onSelectLocation = () => {} }) {
     function submit(e) {
       e.preventDefault();
       if (!q.trim()) return;
-      onSelectLocation({ city: q, country: "US" });
+      onSelectLocation({ name: q });
     }
   
     return (
@@ -112,8 +112,8 @@ function WeatherIcon({ name = "partly", size = 80 }) {
 }
   
 function WeatherInfo({ weather, city, units = "C" }) {
-    const t = units === "C" ? `${weather.temp}°C` : `${Math.round(weather.temp * 1.8 + 32)}°F`;
-    const feels = units === "C" ? `${weather.feels}°C` : `${Math.round(weather.feels * 1.8 + 32)}°F`;
+    const t = units === "C" ? `${weather.temp}°C` : `${Math.round(weather.temp)}°F`;
+    const feels = units === "C" ? `${weather.feels}°C` : `${Math.round(weather.feels)}°F`;
   
     return (
       <section className={styles.weatherCard}>
@@ -180,14 +180,15 @@ function Card({ title, value, caption }) {
     );
   }
   
-function Highlights({ weather }) {
+function Highlights({ weather ,astro }) {
+  console.log(astro)
     return (
       <aside className={styles.highlights}>
         <h3>Today’s Highlights</h3>
         <div className={styles.cardsGrid}>
-          <Card title="UV Index" value={weather.uvIndex} caption="Moderate — wear sunscreen" />
-          <Card title="Sunrise" value={weather.sunrise} caption="Start early!" />
-          <Card title="Sunset" value={weather.sunset} caption="Golden hour" />
+          <Card title="UV Index" value={weather?.uvIndex} caption="Moderate — wear sunscreen" />
+          <Card title="Sunrise" value={astro.sunrise} caption="Start early!" />
+          <Card title="Sunset" value={astro.sunset} caption="Golden hour" />
           <Card title="Visibility" value="10 km" caption="Clear" />
         </div>
       </aside>

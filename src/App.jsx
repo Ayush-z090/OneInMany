@@ -8,7 +8,7 @@ let AppContext = createContext()
 
 function App() {
   let [ParentID ,setParentID] = useState("P1_WA_S1_01");
-  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2"]);
+  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3"]);
   let [fch_data,set_Fch_data] = useState("");
   
   const PassContextValue = {

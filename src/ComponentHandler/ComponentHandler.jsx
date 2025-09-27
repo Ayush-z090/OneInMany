@@ -17,7 +17,7 @@ export default function ComponentHandler(){
         switch(ParentID){
             case "P1_WA_S1_01" :{
                 
-                setArrChildID(["S_E1","S_E3"])
+                // setArrChildID(["S_E1","S_E2"])
                 navigate("/weather")
                 return;
 
