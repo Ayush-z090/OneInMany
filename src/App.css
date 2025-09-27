@@ -1,0 +1,7 @@
+.background{
+    color: var(--text);
+    background: linear-gradient(180deg, rgba(4,8,16,0.95) 0%, rgba(3,12,23,0.9) 60%);
+    position: relative;
+    overflow: hidden;
+    height: 100dvh;
+}
