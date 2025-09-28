@@ -1,0 +1,57 @@
+
+/* hero elemt */
+.hero {
+    margin-bottom: 2rem;
+}
+
+.heading {
+font-size: 3rem;
+font-weight: bold;
+background: linear-gradient(90deg, #ff416c, #ff4b2b, #00c6ff, #0072ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+  
+.subheading {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+/* featured card */
+  
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    width: 200px;
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-8px);
+border-color: #00c6ff;
+}
+  
+
+/* button elemnt */
+
+.button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+transform: scale(1.05);
+box-shadow: 0 0 15px #00c6ff;
+}
+  

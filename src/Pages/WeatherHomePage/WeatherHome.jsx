@@ -1,11 +1,10 @@
 import styles from "./WeatherHome.module.css";
-import componentRetriever from "../../ComponentHandler/Object_tree";
 import { createContext, useState ,useEffect, useContext} from "react";
 import { AppContext } from "../../App";
 import Weather_Fetch from "../../JS_Scrips/weatherApi";
+import WeaterTreeHandling from "../../ComponentHandler/Weather_Tree";
 
 
-let DEmoID = "P1_WA_S1_01"
 
 let WeatherContext = createContext()
 
@@ -17,7 +16,9 @@ const [location, setLocation] = useState({ name: "India" });
 const [units, setUnits] = useState("C"); // C or 
 const [weather,setWeather] = useState("")
 let [astro,setAstro] = useState({sunrise:"",sunset:""})
+
 let {ArrChildID} = useContext(AppContext);
+
 let [is_E1,is_E2,is_E3] = [ArrChildID?.includes("S_E1"),ArrChildID?.includes("S_E2"),ArrChildID?.includes("S_E3")];
 
 let hookVals = {
@@ -60,7 +61,7 @@ return (
     className={styles.bgDecor} 
     aria-hidden />
 
-    {is_E1 ? componentRetriever(DEmoID,"S_E1") : ""}
+    {is_E1 ? <WeaterTreeHandling Child_partID={"S_E1"} /> : ""}
 
     <main
     style={!is_E2 || !is_E3 ? {display:"flex",justifyContent:"center"} : {}}
@@ -70,7 +71,7 @@ return (
       style={ !is_E2  ? {display:"none"} : {}}
       className={styles.left}>
 
-      {is_E2 ? componentRetriever(DEmoID,"S_E2") : ""}
+      {is_E2 ? <WeaterTreeHandling Child_partID={"S_E2"} /> : ""}
 
       </div>
 
@@ -78,7 +79,7 @@ return (
       style={!is_E3 ? {display:"none"} : {}}
       className={styles.right}>
 
-      {is_E3 ? componentRetriever(DEmoID,"S_E3") : ""}
+      {is_E3 ? <WeaterTreeHandling Child_partID={"S_E3"} /> : ""}
 
       </div>
 
