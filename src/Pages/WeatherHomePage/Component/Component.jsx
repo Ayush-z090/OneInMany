@@ -75,7 +75,7 @@ function SearchBox({ onSelectLocation = () => {} }) {
             <button
               type="button"
               key={s}
-              onClick={() => { setQ(s); onSelectLocation({ city: s }); }}
+              onClick={() => { setQ(s); onSelectLocation({ name: s }); }}
               className={styles.suggestBtn}
             >
               {s}
@@ -181,15 +181,15 @@ function Card({ title, value, caption }) {
   }
   
 function Highlights({ weather ,astro }) {
-  console.log(astro)
+  console.log(weather)
     return (
       <aside className={styles.highlights}>
         <h3>Today’s Highlights</h3>
         <div className={styles.cardsGrid}>
-          <Card title="UV Index" value={weather?.uvIndex} caption="Moderate — wear sunscreen" />
+          <Card title="UV Index" value={weather?.uvIndex?.val} caption={weather?.uvIndex?.message} />
           <Card title="Sunrise" value={astro.sunrise} caption="Start early!" />
           <Card title="Sunset" value={astro.sunset} caption="Golden hour" />
-          <Card title="Visibility" value="10 km" caption="Clear" />
+          <Card title="Visibility" value={weather?.vis} caption="Clear" />
         </div>
       </aside>
     );

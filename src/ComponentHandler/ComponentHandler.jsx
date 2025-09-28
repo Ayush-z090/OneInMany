@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import { Route,Routes } from 'react-router-dom'
-import WeatherHomeSection from "../Pages/HomePage/WeatherHome";
+import WeatherHomeSection from "../Pages/WeatherHomePage/WeatherHome";
 
 
 export default function ComponentHandler(){
