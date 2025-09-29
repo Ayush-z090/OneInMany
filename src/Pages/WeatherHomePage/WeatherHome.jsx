@@ -86,7 +86,7 @@ return (
     </main>
 
     <footer className={styles.footer}>w
-      <div>Made with ❤️ · demo data</div>
+      <div>Made with ❤️ Weather api </div>
       <div className={styles.controls}>
         <button className={styles.smallBtn}>Save Location</button>
         <button className={styles.smallBtn}>Share</button>

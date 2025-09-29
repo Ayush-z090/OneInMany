@@ -9,6 +9,8 @@
     color: white;
     padding: 2rem;
     position: relative;
+    background: linear-gradient(180deg, rgba(16, 4, 4, 0.194) 0%, rgba(3, 12, 23, 0.427) 60%);
+
 }
 
 .features {
@@ -17,7 +19,7 @@
   margin: 2rem 0;
 }
   
-.container > img{
+/* .container > img{
   position: absolute;
   top: 0;
   left: 0;
@@ -26,4 +28,4 @@
   object-fit: cover;
   z-index: -1;
   filter: blur(.5px) brightness(.7);
-}
+} */

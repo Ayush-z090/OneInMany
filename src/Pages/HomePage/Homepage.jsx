@@ -4,7 +4,6 @@ import BG_Img from "../../assets/Bg.jpg"
 import { AppContext } from "../../App";
 import HomepageTreeHandler from "../../ComponentHandler/tree/Homepage_tree";
 
-let DEmoID = "P1_HM_02"
 
 export default function HomePage() {
 
@@ -15,7 +14,7 @@ export default function HomePage() {
 
   return (
     <div className={styles.container}>
-      <img src={BG_Img} alt="" />
+      {/* <img src={BG_Img} alt="" /> */}
       {is_E1 ?  <HomepageTreeHandler Child_partID={"S_E1"}/> : ""}
 
       <div className={styles.features}>

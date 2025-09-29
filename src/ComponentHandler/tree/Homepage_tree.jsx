@@ -2,6 +2,8 @@ import { Hero,CTAButton,FeatureCard } from "../../Pages/HomePage/Component/Compo
 
 
 let Object_tree = {
+        // P1 reprsent page1 , HM refers HOmepage ,S1 refers to section one and 0N (n -> 1,2,3...) represnt the elemnts
+
     P1_HM_S1_01 : {
         S_E1 : ()=> <Hero/>,
         S_E2 : ()=> 

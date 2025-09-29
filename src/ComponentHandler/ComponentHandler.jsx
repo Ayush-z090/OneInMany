@@ -14,12 +14,12 @@ export default function ComponentHandler(){
     useEffect(()=>{
 
         switch(ParentID){
-            case "P1_WA_01" :{
+            case "P1_WA_01" :{ // weatherApp
                 // setArrChildID(["S_E1","S_E2"])
                 navigate("/weather")
                 return;
             }
-            case "P1_HM_01" : {
+            case "P1_HM_02" : { // homepage
                 navigate("/Home")
                 return;
             }

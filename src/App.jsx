@@ -1,10 +1,11 @@
 import { createContext, useState } from 'react'
 import './App.css'
 import ComponentHandler from './ComponentHandler/ComponentHandler'
-
+import BG_Img from "./assets/Bg.jpg"
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
+// P1_WA_01 - P1_HM_02
 
 function App() {
   let [ParentID ,setParentID] = useState("P1_WA_01");
@@ -22,6 +23,8 @@ function App() {
   // console.log(ArrChildID)
   return(
     <>
+      <img src={BG_Img} alt="" />
+
     <AppContext.Provider value={PassContextValue} > 
       <ComponentHandler/>
     </AppContext.Provider>
