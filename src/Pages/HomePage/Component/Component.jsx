@@ -1,32 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Component.module.css";
+import {motion}  from "framer-motion"
+import { slideFade } from "../../../JS_Scrips/Animate";
+import { AppContext } from "../../../App";
 
 
-function Hero() {
+function Hero({time,delay}) {
+  let {isActive} =useContext(AppContext)
+
   return (
-    <div className={styles.hero}>
+    <motion.div {...slideFade(time,isActive,delay)} className={styles.hero}>
       <h1 className={styles.heading}>Next-Gen AI Platform</h1>
       <p className={styles.subheading}>
         Control, speed, and accuracy — built for the future.
       </p>
-    </div>
+    </motion.div>
   );
 }
 
 
-function FeatureCard({ title, desc }) {
+function FeatureCard({ title, desc, time , delay }) {
+  let {isActive} =useContext(AppContext)
+
     return (
-      <div className={styles.card}>
+      <motion.div {...slideFade(time,isActive,delay)} className={styles.card}>
         <h3>{title}</h3>
         <p>{desc}</p>
-      </div>
+      </motion.div>
     );
   
 }
 
-
-function CTAButton({ text }) {
-  return <button className={styles.button}>{text}</button>;
+function CTAButton({ text,time ,delay }) {
+  let {isActive} =useContext(AppContext)
+  return <motion.button  {...slideFade(time,isActive,delay)} className={styles.button}>{text}</motion.button>;
 }
 
 

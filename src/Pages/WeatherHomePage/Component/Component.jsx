@@ -1,10 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./Component.module.css";
+import { AppContext } from "../../../App";
+import {motion} from "framer-motion"
+import { slideFade } from "../../../JS_Scrips/Animate";
+import { WeatherContext } from "../WeatherHome";
+
 
 
 function Navbar({ location, units, setUnits }) {
+  let {isActive} = useContext(AppContext)
+  let {time,delayArr} = useContext(WeatherContext)
+
     return (
-        <header className={styles.navbar}>
+        <motion.header
+        {...slideFade(time,isActive,delayArr[0])}
+        className={styles.navbar}>
           <div className={styles.brand}>
             <svg viewBox="0 0 24 24" className={styles.logoSvg} aria-hidden>
               <defs>
@@ -44,14 +54,18 @@ function Navbar({ location, units, setUnits }) {
               </button>
             </div>
           </div>
-        </header>
+        </motion.header>
       );
 }
 
 function SearchBox({ onSelectLocation = () => {} }) {
     const [q, setQ] = useState("");
     const suggestions = ["San Francisco", "New York", "Mumbai", "London", "Tokyo"];
-  
+    let {isActive} = useContext(AppContext)
+    let {time,delayArr} = useContext(WeatherContext)
+
+
+
     function submit(e) {
       e.preventDefault();
       if (!q.trim()) return;
@@ -59,7 +73,9 @@ function SearchBox({ onSelectLocation = () => {} }) {
     }
   
     return (
-      <form className={styles.searchBox} onSubmit={submit}>
+      <motion.form
+      {...slideFade(time,isActive,delayArr[1])}
+      className={styles.searchBox} onSubmit={submit}>
         <div className={styles.searchInner}>
           <input
             value={q}
@@ -82,7 +98,7 @@ function SearchBox({ onSelectLocation = () => {} }) {
             </button>
           ))}
         </div>
-      </form>
+      </motion.form>
     );
 }
 
@@ -114,9 +130,14 @@ function WeatherIcon({ name = "partly", size = 80 }) {
 function WeatherInfo({ weather, city, units = "C" }) {
     const t = units === "C" ? `${weather.temp}°C` : `${Math.round(weather.temp)}°F`;
     const feels = units === "C" ? `${weather.feels}°C` : `${Math.round(weather.feels)}°F`;
-  
+    let {isActive} = useContext(AppContext)
+    let {time,delayArr} = useContext(WeatherContext)
+
+
     return (
-      <section className={styles.weatherCard}>
+      <motion.section
+      {...slideFade(time,isActive,delayArr[1])}
+      className={styles.weatherCard}>
         <div className={styles.weatherLeft}>
           <div className={styles.cityRow}>
             <h2>{city}</h2>
@@ -143,13 +164,18 @@ function WeatherInfo({ weather, city, units = "C" }) {
             <WeatherIcon name="partly" size={110} />
           </div>
         </div>
-      </section>
+      </motion.section>
     );
 }
 
 function HourlyForecast({ hourly = [], units = "C" }) {
+  let {isActive} = useContext(AppContext)
+  let {time,delayArr} = useContext(WeatherContext)
+
     return (
-      <div className={styles.hourly}>
+      <motion.div
+      {...slideFade(time,isActive,delayArr[2])}
+      className={styles.hourly}>
         <h3>Hourly</h3>
         <div className={styles.hourList}>
           {hourly.map((h, i) => (
@@ -165,7 +191,7 @@ function HourlyForecast({ hourly = [], units = "C" }) {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     );
 }
 
@@ -181,9 +207,13 @@ function Card({ title, value, caption }) {
   }
   
 function Highlights({ weather ,astro }) {
-  console.log(weather)
-    return (
-      <aside className={styles.highlights}>
+  let {isActive} = useContext(AppContext)
+  let {time,delayArr} = useContext(WeatherContext)
+
+  return (
+      <motion.aside
+      {...slideFade(time,isActive,delayArr[2])}
+      className={styles.highlights}>
         <h3>Today’s Highlights</h3>
         <div className={styles.cardsGrid}>
           <Card title="UV Index" value={weather?.uvIndex?.val} caption={weather?.uvIndex?.message} />
@@ -191,7 +221,7 @@ function Highlights({ weather ,astro }) {
           <Card title="Sunset" value={astro.sunset} caption="Golden hour" />
           <Card title="Visibility" value={weather?.vis} caption="Clear" />
         </div>
-      </aside>
+      </motion.aside>
     );
   }
 

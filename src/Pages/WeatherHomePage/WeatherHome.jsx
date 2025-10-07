@@ -2,7 +2,8 @@ import styles from "./WeatherHome.module.css";
 import { createContext, useState ,useEffect, useContext} from "react";
 import { AppContext } from "../../App";
 import Weather_Fetch from "../../JS_Scrips/weatherApi";
-import WeaterTreeHandling from "../../ComponentHandler/Weather_Tree";
+import WeaterTreeHandling from "../../ComponentHandler/tree/Weather_Tree";
+import { delayTimer } from "../../JS_Scrips/Animate";
 
 
 
@@ -11,6 +12,8 @@ let WeatherContext = createContext()
 export {WeatherContext}
 
 export default function WeatherHomeSection() {
+
+  
 // small demo state: theme (light/dark) and mock weather data
 const [location, setLocation] = useState({ name: "India" });
 const [units, setUnits] = useState("C"); // C or 
@@ -18,11 +21,13 @@ const [weather,setWeather] = useState("")
 let [astro,setAstro] = useState({sunrise:"",sunset:""})
 
 let {ArrChildID} = useContext(AppContext);
-
 let [is_E1,is_E2,is_E3] = [ArrChildID?.includes("S_E1"),ArrChildID?.includes("S_E2"),ArrChildID?.includes("S_E3")];
 
+let [time,setTime] = useState(3)
+let [delayArr,setDelayArr] = useState(delayTimer([is_E1,is_E2,is_E3]))
+
 let hookVals = {
-  units,setUnits,weather,setWeather,location,setLocation,astro,setAstro
+  units,setUnits,weather,setWeather,location,setLocation,astro,setAstro,time,delayArr
 }
 
 useEffect(()=>{
@@ -32,7 +37,6 @@ useEffect(()=>{
               setAstro(res.forecast.forecastday[0].astro)
               console.log(res?.current.vis_km)
               setLocation(res.location)
-
               setWeather(
                   {
                       temp: units === "C" ? res?.current.temp_c : res?.current.temp_f,
@@ -49,6 +53,7 @@ useEffect(()=>{
           }).catch(rej => alert("fail to fetch"))
 
 },[location.name,astro.sunrise,astro.sunset])
+
 
 
 return (

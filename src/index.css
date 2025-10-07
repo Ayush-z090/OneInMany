@@ -1,8 +1,15 @@
  /* for weather app */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+*{
+    margin: 0;
+  padding: 0;
+}
 
 :root{
+
+  /* WeatherHomePage */
   --bg1: #0f172a;
   --bg2: #08203a;
   --accent: #7dd3fc;
@@ -10,12 +17,35 @@
   --glass-2: rgba(255,255,255,0.08);
   --glass-3: rgba(255,255,255,0.12);
   --text: #e6eef8;
-}
+
+  /* RestaurantPage */
+
+ /* Primary Brand Colors */
+ --color-Res-primary: #155B46;
+ --color-Res-secondary: #19675a;
+
+ /* Accent Colors */
+ --color-Res-accent: #F27847;
+ --color-Res-accent-light: #F8C36B;
+
+ /* Backgrounds */
+ --color-Res-bg-main: #F7F4EF;
+ --color-Res-bg-light: #ffe5cc;
+
+ /* Text Colors */
+ --color-Res-text-dark: #1C1C1C;
+ --color-Res-text-light: #FFFFFF;
+
+ /* Button */
+ --color-Res-button-bg: #e3612d;
+ --color-Res-button-text: #FFFFFF;
+
+ /* Borders or highlights */
+ --color-Res-border: #E0E0E0;}
 
 /* *{box-sizing: border-box} */
 body
 {
-  margin:0;
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text);
   /* background: linear-gradient(180deg, rgba(4,8,16,0.95) 0%, rgba(3,12,23,0.9) 60%); */

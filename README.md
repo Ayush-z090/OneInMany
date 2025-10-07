@@ -1,16 +1,27 @@
-# React + Vite
+this project is made to check whether it is possible to control through Ui elemnts via ui 
+handling ui means if ai wants to show the page we want and it also decide which part of elemtn should shown to render 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+this project's name is ALL in App mean any web app can be integrated to this project 
 
-Currently, two official plugins are available:
+steps or architechture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1 : app.jsx is a script where  the final ouput is shown ...
+2 : now we will talk about the layerd structure of multilple script which works together to give the desired results i want ..
+ a) we break a page into 2 scripts i.e 
 
-## React Compiler
+ pageScript : a script where whole page is shown
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+ component.jsx : a script where we create compoent/element which we want ai to handle 
 
-## Expanding the ESLint configuration
+ b) we break ai handling script into two part , in it ai wont handle ,here we assgn the page its id and its elmnt and id 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ componentHandler.jsx : a script where routing is handled , in this we get data from ai ,after getting the ai we decide what to do or not make the setup such a way that ai can handle it 
+
+ tree script :  a script where the id is assigned to the component and page according to these id and the data receuve  comonenthandler handles routes
+ we creatd this script in order to make the elemnt easy to undestand 
+ it also helps us to render a certain elemt at a time i.e. it use object_tree which bassicaly a object where keys are id and element and grougped elemtns are component 
+ a certain  component is  return by the treehandler funciton in its own pagescipt where the compoentrn should be render
+
+
+Basically in the frontend there is no ai involment its a complex structure , the use of ai is in backend only 
+we just setup make the frontend such that the elemtn will be dependen on the data the ai create which bascically mean ai is indirecly handling the frontend
