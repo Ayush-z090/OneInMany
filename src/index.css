@@ -48,7 +48,7 @@ body
 {
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text);
-  /* background: linear-gradient(180deg, rgba(4,8,16,0.95) 0%, rgba(3,12,23,0.9) 60%); */
+  background:black;
   position: relative;
   overflow: hidden;
   height: 100dvh;

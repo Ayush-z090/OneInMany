@@ -37,5 +37,13 @@ function delayTimer(arr){
     return Arr
 }
   
+function bgFadeEffect(ini_col,fin_col,condition){
+  return {
+    initial:{background:ini_col},
+    animate:
+      {background:condition ? ini_col : fin_col,
+      transition:{duration:1,delay:.5}},
+  }
+}
 
- export {slideFade,delayTimer}
+ export {slideFade,delayTimer,bgFadeEffect}

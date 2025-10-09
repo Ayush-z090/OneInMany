@@ -3,7 +3,8 @@ import { createContext, useState ,useEffect, useContext} from "react";
 import { AppContext } from "../../App";
 import Weather_Fetch from "../../JS_Scrips/weatherApi";
 import WeaterTreeHandling from "../../ComponentHandler/tree/Weather_Tree";
-import { delayTimer } from "../../JS_Scrips/Animate";
+import { bgFadeEffect, delayTimer } from "../../JS_Scrips/Animate";
+import { motion } from "framer-motion";
 
 
 
@@ -20,7 +21,7 @@ const [units, setUnits] = useState("C"); // C or
 const [weather,setWeather] = useState("")
 let [astro,setAstro] = useState({sunrise:"",sunset:""})
 
-let {ArrChildID} = useContext(AppContext);
+let {ArrChildID,isActive} = useContext(AppContext);
 let [is_E1,is_E2,is_E3] = [ArrChildID?.includes("S_E1"),ArrChildID?.includes("S_E2"),ArrChildID?.includes("S_E3")];
 
 let [time,setTime] = useState(3)
@@ -60,10 +61,12 @@ return (
   <WeatherContext.Provider value={hookVals}>
   <section
   className={styles.section} 
+  style={{backgroundColor:"transparent"}}
   data-theme="dark">
 
-    <div 
+    <motion.div 
     className={styles.bgDecor} 
+    {...bgFadeEffect("","#ffcc0000",isActive)}
     aria-hidden />
 
     {is_E1 ? <WeaterTreeHandling Child_partID={"S_E1"} /> : ""}

@@ -17,10 +17,10 @@ function App() {
   let [isActive,setActivestate] = useState(true)
 
   // this hook tracks what page to naviagte note that navigation part is done in component handler script - this id code is choosen by ai 
-  let [ParentID ,setParentID] = useState("P1_HM_02");
+  let [ParentID ,setParentID] = useState("P1_RA_03");
 
   // as Ai will handle what part or component or elemnts to render  this array will handles that logic
-  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3","S_E4"]);
+  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3",""]);
 
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
@@ -37,7 +37,7 @@ function App() {
   // console.log(ArrChildID)
   return(
     <>
-      <img src={BG_Img} alt="" />
+      { !isActive ? "" : <img src={BG_Img} alt="" />}
       
     <AppContext.Provider value={PassContextValue} > 
       <ComponentHandler/>
