@@ -5,7 +5,10 @@ import { Route,Routes } from 'react-router-dom'
 import WeatherHomeSection from "../Pages/WeatherHomePage/WeatherHome";
 import HomePage from "../Pages/HomePage/Homepage";
 import RestaurantPage from "../Pages/RestaurantPage/RestaurantPage";
-
+import { AnimatePresence, motion } from "framer-motion";
+import Styles from "./ComonentHandler.module.css"
+import Button from '@mui/material/Button';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 export default function ComponentHandler(){
 
@@ -24,7 +27,7 @@ export default function ComponentHandler(){
                 navigate("/Home");
                 return;
             }
-            case "P1_RA_03":{
+            case "P1_RA_03":{ // restaurant page
                 navigate("/NearBytaste");
                 return;
             }
@@ -47,3 +50,62 @@ export default function ComponentHandler(){
         </>
     )
 }
+
+function UserQueryHandler(){
+
+    const { enqueueSnackbar } = useSnackbar();
+    let {} = useContext(AppContext)
+
+    const handleFormSubmit = (e)=>
+        {
+            e.preventDefault();
+            enqueueSnackbar('I love snacks.');
+        }
+
+    return(
+        <>
+        <AnimatePresence>
+            <motion.form
+            id="_form"
+            initial={{
+                opacity:0,
+                transform:"translateY(3rem)"
+            }}
+            animate={{
+                opacity:1,
+                transform:"translateY(0)"
+            }}
+            className={Styles.form}
+            onSubmit={ handleFormSubmit}>
+                <motion.textarea
+                onKeyDown={(e)=>{
+                    if(e.key === "Enter" && !e.shiftKey){
+                        e.preventDefault();
+                        e.currentTarget.form?.requestSubmit();
+                    }
+                }}
+                whileFocus={
+                    {
+                     height:"4rem"
+                    }
+                }
+                className={Styles.textarea}
+                placeholder="type here"
+                id="userQuery"
+                name="UserPrompt">
+                </motion.textarea>
+                <Button  type="submit">search</Button>
+            </motion.form>
+        </AnimatePresence>
+        </>
+    )
+}
+
+function AissistanceReply({sty}){
+    return(
+        <>
+        </>
+    )
+}
+
+export {UserQueryHandler,AissistanceReply}

@@ -4,7 +4,7 @@ import { AppContext } from "../../App";
 import Weather_Fetch from "../../JS_Scrips/weatherApi";
 import WeaterTreeHandling from "../../ComponentHandler/tree/Weather_Tree";
 import { bgFadeEffect, delayTimer } from "../../JS_Scrips/Animate";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 
 
@@ -28,7 +28,7 @@ let [time,setTime] = useState(3)
 let [delayArr,setDelayArr] = useState(delayTimer([is_E1,is_E2,is_E3]))
 
 let hookVals = {
-  units,setUnits,weather,setWeather,location,setLocation,astro,setAstro,time,delayArr
+  units,setUnits,weather,setWeather,location,setLocation,astro,setAstro,time,delayArr,is_E1,is_E2,is_E3
 }
 
 useEffect(()=>{
@@ -59,6 +59,8 @@ useEffect(()=>{
 
 return (
   <WeatherContext.Provider value={hookVals}>
+      <AnimatePresence mode="sync">
+
   <section
   className={styles.section} 
   style={{backgroundColor:"transparent"}}
@@ -101,8 +103,10 @@ return (
       </div>
     </footer>
   </section>
+  </AnimatePresence>
   </WeatherContext.Provider>
 );}
+
 
 function getNext7HoursForecast(hourlyArray) {
   const now = new Date();

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./Component.module.css";
 import { AppContext } from "../../../App";
-import {motion} from "framer-motion"
+import {AnimatePresence, motion} from "framer-motion"
 import { slideFade } from "../../../JS_Scrips/Animate";
 import { WeatherContext } from "../WeatherHome";
 
@@ -9,11 +9,15 @@ import { WeatherContext } from "../WeatherHome";
 
 function Navbar({ location, units, setUnits }) {
   let {isActive} = useContext(AppContext)
-  let {time,delayArr} = useContext(WeatherContext)
+  let {time,delayArr,is_E1  } = useContext(WeatherContext)
 
     return (
+      <AnimatePresence>
         <motion.header
-        {...slideFade(time,isActive,delayArr[0])}
+          key={"comp_1"}
+          layout
+          style={{display:"flex"}}
+        {...slideFade(time,is_E1,delayArr[0])}
         className={styles.navbar}>
           <div className={styles.brand}>
             <svg viewBox="0 0 24 24" className={styles.logoSvg} aria-hidden>
@@ -55,6 +59,8 @@ function Navbar({ location, units, setUnits }) {
             </div>
           </div>
         </motion.header>
+        </AnimatePresence>
+
       );
 }
 
@@ -62,7 +68,7 @@ function SearchBox({ onSelectLocation = () => {} }) {
     const [q, setQ] = useState("");
     const suggestions = ["San Francisco", "New York", "Mumbai", "London", "Tokyo"];
     let {isActive} = useContext(AppContext)
-    let {time,delayArr} = useContext(WeatherContext)
+    let {time,delayArr,  is_E2    } = useContext(WeatherContext)
 
 
 
@@ -73,8 +79,11 @@ function SearchBox({ onSelectLocation = () => {} }) {
     }
   
     return (
+      <AnimatePresence>
       <motion.form
-      {...slideFade(time,isActive,delayArr[1])}
+          key={"comp_2"}
+          layout      
+      {...slideFade(time,is_E2,delayArr[1])}
       className={styles.searchBox} onSubmit={submit}>
         <div className={styles.searchInner}>
           <input
@@ -99,6 +108,7 @@ function SearchBox({ onSelectLocation = () => {} }) {
           ))}
         </div>
       </motion.form>
+      </AnimatePresence>
     );
 }
 
@@ -131,12 +141,15 @@ function WeatherInfo({ weather, city, units = "C" }) {
     const t = units === "C" ? `${weather.temp}°C` : `${Math.round(weather.temp)}°F`;
     const feels = units === "C" ? `${weather.feels}°C` : `${Math.round(weather.feels)}°F`;
     let {isActive} = useContext(AppContext)
-    let {time,delayArr} = useContext(WeatherContext)
+    let {time,delayArr,is_E2} = useContext(WeatherContext)
 
 
     return (
+      <AnimatePresence>
       <motion.section
-      {...slideFade(time,isActive,delayArr[1])}
+          key={"comp_3"}
+          layout      
+      {...slideFade(time,is_E2,delayArr[1])}
       className={styles.weatherCard}>
         <div className={styles.weatherLeft}>
           <div className={styles.cityRow}>
@@ -165,16 +178,21 @@ function WeatherInfo({ weather, city, units = "C" }) {
           </div>
         </div>
       </motion.section>
+      </AnimatePresence>
+
     );
 }
 
 function HourlyForecast({ hourly = [], units = "C" }) {
   let {isActive} = useContext(AppContext)
-  let {time,delayArr} = useContext(WeatherContext)
+  let {time,delayArr,is_E3} = useContext(WeatherContext)
 
     return (
+      <AnimatePresence>
       <motion.div
-      {...slideFade(time,isActive,delayArr[2])}
+          key={"comp_3"}
+          layout      
+      {...slideFade(time,is_E3,delayArr[2])}
       className={styles.hourly}>
         <h3>Hourly</h3>
         <div className={styles.hourList}>
@@ -192,6 +210,8 @@ function HourlyForecast({ hourly = [], units = "C" }) {
           ))}
         </div>
       </motion.div>
+      </AnimatePresence>
+
     );
 }
 
@@ -208,11 +228,14 @@ function Card({ title, value, caption }) {
   
 function Highlights({ weather ,astro }) {
   let {isActive} = useContext(AppContext)
-  let {time,delayArr} = useContext(WeatherContext)
+  let {time,delayArr,is_E3} = useContext(WeatherContext)
 
   return (
+    <AnimatePresence>
       <motion.aside
-      {...slideFade(time,isActive,delayArr[2])}
+          key={"comp_4"}
+          layout      
+      {...slideFade(time,is_E3,delayArr[2])}
       className={styles.highlights}>
         <h3>Today’s Highlights</h3>
         <div className={styles.cardsGrid}>
@@ -222,6 +245,8 @@ function Highlights({ weather ,astro }) {
           <Card title="Visibility" value={weather?.vis} caption="Clear" />
         </div>
       </motion.aside>
+    </AnimatePresence>
+
     );
   }
 

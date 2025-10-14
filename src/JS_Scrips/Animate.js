@@ -21,6 +21,10 @@
           mass:7
           
         },
+        transitionEnd:{
+          display: condition ? "block" : "none",
+        },
+
       },
     };};
 

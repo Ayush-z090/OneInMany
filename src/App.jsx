@@ -1,8 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import './App.css'
 import ComponentHandler from './ComponentHandler/ComponentHandler'
 import BG_Img from "./assets/Bg.jpg"
 import RestaurantPage from './Pages/RestaurantPage/RestaurantPage'
+import { SnackbarProvider } from 'notistack'
+import { useLocation } from 'react-router-dom'
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
@@ -13,14 +15,15 @@ let AppContext = createContext()
 // RA - Restaurant page - total elemt = 4
 
 function App() {
+  let location = useLocation()
   // this hook controls the strating and ending animation i.e in-out animation
   let [isActive,setActivestate] = useState(true)
 
   // this hook tracks what page to naviagte note that navigation part is done in component handler script - this id code is choosen by ai 
-  let [ParentID ,setParentID] = useState("P1_RA_03");
+  let [ParentID ,setParentID] = useState("P1_WA_01");
 
   // as Ai will handle what part or component or elemnts to render  this array will handles that logic
-  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3",""]);
+  let [ArrChildID,setArrChildID] = useState(["S_E1","","S_E3","S_E4"]);
 
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
@@ -34,15 +37,33 @@ function App() {
     setActivestate
   }
 
+  useEffect(()=>{
+    setTimeout(() => {
+      setArrChildID(["S_E1","S_E2","S_E3","S_E4"])
+    }, 3000);
+  })
+
+  console.log(location.pathname)
   // console.log(ArrChildID)
   return(
     <>
       { !isActive ? "" : <img src={BG_Img} alt="" />}
-      
-    <AppContext.Provider value={PassContextValue} > 
-      <ComponentHandler/>
-    </AppContext.Provider>
-
+    <SnackbarProvider 
+      anchorOrigin={{
+        vertical: 'top',   // 'top' or 'bottom'
+        horizontal: location.pathname !== "/Home" ? "right" : 'center',  // 'left' | 'center' | 'right'
+      }}    
+    maxSnack={1}
+    style={{
+      width:"45vw",
+      maxHeight:"30dvh",
+      overflow:"auto"
+    }}
+    >
+      <AppContext.Provider value={PassContextValue} > 
+        <ComponentHandler/>
+      </AppContext.Provider>
+    </SnackbarProvider>
     </>
   )
 }
