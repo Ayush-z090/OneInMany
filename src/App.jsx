@@ -20,7 +20,7 @@ function App() {
   let [isActive,setActivestate] = useState(true)
 
   // this hook tracks what page to naviagte note that navigation part is done in component handler script - this id code is choosen by ai 
-  let [ParentID ,setParentID] = useState("P1_WA_01");
+  let [ParentID ,setParentID] = useState("P1_RA_03");
 
   // as Ai will handle what part or component or elemnts to render  this array will handles that logic
   let [ArrChildID,setArrChildID] = useState(["S_E1","","S_E3","S_E4"]);

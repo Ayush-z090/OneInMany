@@ -4,8 +4,9 @@ import styles from "./Component.module.css";
 import Typography from "@mui/material/Typography";
 import { AppContext } from "../../../App";
 import { RestaurantContext } from "../RestaurantPage";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { slideFade } from "../../../JS_Scrips/Animate";
+
 const features = [
   {
     id:1,
@@ -25,13 +26,15 @@ const features = [
 ];
 
 const FeaturesSection = () => {
-  let {isActive} = useContext(AppContext)
-  let {time,delayArr} = useContext(RestaurantContext)
+  let {time,delayArr,is_E3} = useContext(RestaurantContext)
   
   return (
     <>
+    <AnimatePresence>
       <motion.div 
-      {...slideFade(time,isActive,delayArr[2])}
+          key={"comp_3"}
+          layout      
+      {...slideFade(time,is_E3,delayArr[2])}
       className={styles.features}>
         {features.map(data=>
           <Card
@@ -53,6 +56,7 @@ const FeaturesSection = () => {
           </Card>
         )}
       </motion.div>
+      </AnimatePresence>
     </>
   );
 };

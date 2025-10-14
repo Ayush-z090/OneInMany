@@ -2,7 +2,7 @@ import Box from "@mui/material/Box"
 import styles from "./Component.module.css";
 import { AppContext } from "../../../App";
 import { RestaurantContext } from "../RestaurantPage";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { slideFade } from "../../../JS_Scrips/Animate";
 import { useContext, useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
@@ -39,7 +39,7 @@ const skeletonData = {
 export default function NearbyRes(){
 
     let {isActive} = useContext(AppContext)
-    let {time,delayArr} = useContext(RestaurantContext)
+    let {time,delayArr,is_E4} = useContext(RestaurantContext)
     let [selectedOpt,setOption] = useState(null)
     let [fetchData , setData] = useState([])
     let [searchName ,setSearchName] = useState('')
@@ -55,8 +55,11 @@ export default function NearbyRes(){
 
       return(
         <>
+        <AnimatePresence >
         <Box 
-        {...slideFade(time,isActive,delayArr[3])}
+            key={"comp_4"}
+            layout        
+        {...slideFade(time,is_E4,delayArr[3])}
         component={motion.div} 
         className={styles.Res_comp}>
             <Box
@@ -124,6 +127,7 @@ export default function NearbyRes(){
                 }
             </Box>
         </Box>
+        </AnimatePresence>
         </>
     )
 }

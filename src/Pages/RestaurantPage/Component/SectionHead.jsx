@@ -6,19 +6,21 @@ import Vec_Img from "../../../assets/Res_Vec_img.png";
 import Vector_img_01 from "../../../assets/vec_img_01.png";
 import { AppContext } from "../../../App";
 import { RestaurantContext } from "../RestaurantPage";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { slideFade } from "../../../JS_Scrips/Animate";
 
 const SectionHead = () => {
   
-  let {isActive} = useContext(AppContext)
-  let {time,delayArr} = useContext(RestaurantContext)
+  let {time,delayArr,is_E2} = useContext(RestaurantContext)
 
 
   return (
+    <AnimatePresence>
     <Box
+    key={"comp_2"}
+    layout
     component={motion.div}
-    {...slideFade(time,isActive,delayArr[1])}
+    {...slideFade(time,is_E2,delayArr[1])}
     className={styles.bodySec}>
       <div className={styles.left}>
           <h1>Taste Around You
@@ -34,6 +36,7 @@ const SectionHead = () => {
             <img className={styles.BgVEc} src={Vec_Img} alt="" />
       </div>
     </Box>
+    </AnimatePresence>
   );
 };
 
