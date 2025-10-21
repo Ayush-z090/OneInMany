@@ -18,16 +18,17 @@ export default function RestaurantPage() {
     return (
     <>
     <RestaurantContext.Provider value={{delayArr,time,is_E1,is_E2,is_E3,is_E4}}>
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync">
       <motion.div 
-      preserveDisplay 
-      {...bgFadeEffect("#155B46","#ffcc0000",isActive)}
+      // {...bgFadeEffect("#155B46","#ffcc0000",isActive)}
+      initial={{opacity:0}}
+      animate={{opacity:1}}
       style={{
         paddingTop:"1rem",
-        // backgroundColor:"var(--color-Res-primary)",
+        backgroundColor:"var(--color-Res-primary)",
         width:"100vw",
         height:"100dvh",
-        overflow:"auto"
+        overflowY:"scroll"
       }}
       >
         {is_E1 ? <RestaurantTreeHandlelr Child_partID={"S_E1"}/> : ""}

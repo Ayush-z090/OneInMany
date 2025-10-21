@@ -38,20 +38,28 @@ const skeletonData = {
 
 export default function NearbyRes(){
 
-    let {isActive} = useContext(AppContext)
+  // global fetch data
+    let {fch_data} = useContext(AppContext)
+    // aniamtion time , animaion delay arr , is this elemnt should render is_E4 ...
     let {time,delayArr,is_E4} = useContext(RestaurantContext)
+    // hook to select opt
     let [selectedOpt,setOption] = useState(null)
+    //  the component own fetch data i.e.  nearby places for meals and food
     let [fetchData , setData] = useState([])
+    // hook to filter the place Card component with their name                                  
     let [searchName ,setSearchName] = useState('')
+    // hook to check currnt rating 
     const [rating, setRating] = useState("");
+    // hook to check the range of places
     const [distance, setDistance] = useState(5);
 
 
     useEffect(()=>
         {
-            getNearbyRestaurants({limit:20,radius:distance * 1000}).then(res_data => setData(res_data))
+          console.log("just rin")
+            getNearbyRestaurants({ category:fch_data?.Ai_data?.category,limit:20,radius:distance * 1000}).then(res_data => setData(res_data))
              
-        },[distance])
+        },[distance,fch_data?.Ai_data?.category])
 
       return(
         <>
@@ -111,11 +119,6 @@ export default function NearbyRes(){
                       {
                         let R = /\b\d+.\d+\b/.exec(res.distance)
 
-                        console.log(distance ,R[0],!distance ||
-                            ( R[0] <= 1) ||
-                            (R[0] <= 2) ||
-                            (R[0] <= 5) ||
-                            (R[0] <= 10))
                        return !distance ||
                       ( R[0] <= 1) ||
                       (R[0] <= 2) ||
@@ -181,20 +184,16 @@ function DropDownButton({selectedOpt,setOption}){
 
 
     const foodOptions = [
-        { label: 'Burger', id: 1 },
-        { label: 'Pizza', id: 2 },
-        { label: 'Biryani', id: 3 },
-        { label: 'Pasta', id: 4 },
-        { label: 'Sandwich', id: 5 },
-        { label: 'Dosa', id: 6 },
-        { label: 'Noodles', id: 7 },
-        { label: 'Tacos', id: 8 },
+        { label: 'Fast-Food', id: 1 },
+        { label: 'Cafe', id: 2 },
+        { label: 'Ice Cream', id: 3 },
+        { label: 'Restaurant', id: 4 },
       ];
       
     return(
         <>
             <Autocomplete
-            disablePortal
+            disablePortal 
             value={selectedOpt}
             onChange={(_event,newVal)=> setOption(newVal)}
             sx={
@@ -213,7 +212,7 @@ function DropDownButton({selectedOpt,setOption}){
             }
             options={foodOptions}
             getOptionLabel={(option)=> option.label}
-            renderInput={(params)=> <TextField {...params} label={'Query'}/>}
+            renderInput={(params)=> <TextField {...params} label={'Meals'}/>}
             />
         </>
     )

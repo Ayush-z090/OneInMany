@@ -30,7 +30,7 @@ function delayTimer(arr){
     let time = 0
     let Arr = arr.map(val=>{
       if (val){
-        time+=0.3
+        time+=0.2
         return time;
       }
       else return 0

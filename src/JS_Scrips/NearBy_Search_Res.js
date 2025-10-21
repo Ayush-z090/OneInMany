@@ -27,7 +27,7 @@ const restaurantImages = [
 export default async function getNearbyRestaurants({
     radius = 2000,
     limit = 10,
-    category = "catering.restaurant",
+    category = "catering.fast_food.burger",
     biasType = "proximity",
   } = {}) {
     const API_KEY = import.meta.env.VITE_PLACE_API_KEY;
@@ -41,7 +41,7 @@ export default async function getNearbyRestaurants({
       const { latitude, longitude } = position.coords;
   
       //Create cache key
-      const cacheKey = `restaurants_${latitude.toFixed(2)}_${longitude.toFixed(2)}_${radius}`;
+      const cacheKey = `restaurants_${latitude.toFixed(2)}_${longitude.toFixed(2)}_${radius}_${category}`;
       const cachedData = localStorage.getItem(cacheKey);
   
       //Return cached data if available
@@ -57,7 +57,7 @@ export default async function getNearbyRestaurants({
       // Step 5: Fetch data from API
       const response = await fetch(API_URL);
       const data = await response.json();
-  
+      console.log(data)
       // Step 6: Format data
       const restaurants = data.features.map((place, index) => {
         const prop = place.properties;
