@@ -5,6 +5,7 @@ import BG_Img from "./assets/Bg.jpg"
 import RestaurantPage from './Pages/RestaurantPage/RestaurantPage'
 import { SnackbarProvider } from 'notistack'
 import { useLocation } from 'react-router-dom'
+import NikePage from './Pages/NikeShoePage/Nike'
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
@@ -78,7 +79,8 @@ function App() {
     }}
     >
       <AppContext.Provider value={PassContextValue} > 
-        <ComponentHandler/>
+        <NikePage/>
+        {/* <ComponentHandler/> */}
        {location.pathname === "/Home" ? "" : <UserQueryHandler/>}
       </AppContext.Provider>
     </SnackbarProvider>
