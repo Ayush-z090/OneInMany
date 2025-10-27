@@ -11,6 +11,7 @@ import  Fab from "@mui/material/Fab";
 import  Box from "@mui/material/Box";
 import { useSnackbar } from 'notistack';
 import {AI_Query} from "../JS_Scrips/AIQuery.js"
+import Nike from "../Pages/NikeShoePage/Nike.jsx";
 
 export default function ComponentHandler(){
 
@@ -32,6 +33,11 @@ export default function ComponentHandler(){
                 navigate("/NearBytaste");
                 return;
             }
+            case "P1_NS_04" :{
+              navigate("/NikeShoes");
+              return;
+
+            }
             
         }
     
@@ -45,6 +51,7 @@ export default function ComponentHandler(){
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path='/weather' element={<WeatherHomeSection/>}/>
                 <Route path="/NearBytaste" element={<RestaurantPage/>}/>
+                <Route path="/NikeShoes" element={<Nike/>}/>
           </Routes>
 
             

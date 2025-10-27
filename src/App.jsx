@@ -9,11 +9,12 @@ import NikePage from './Pages/NikeShoePage/Nike'
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
-// P1_WA_01 - P1_HM_02 - P1_RA_03
+// P1_WA_01 - P1_HM_02 - P1_RA_03 - P1_NS_04
 // the code ids meaning
 // WA -weather app - total elemt = 3
 // HM - Home page - total elemt = 3
 // RA - Restaurant page - total elemt = 4
+// NS - Nike Shoe page - total elemt = 8
 
 function App() {
   let location = useLocation()
@@ -21,10 +22,10 @@ function App() {
   let [isActive,setActivestate] = useState(true)
 
   // this hook tracks what page to naviagte note that navigation part is done in component handler script - this id code is choosen by ai 
-  let [ParentID ,setParentID] = useState("P1_WA_01");
+  let [ParentID ,setParentID] = useState("P1_NS_04");
 
   // as Ai will handle what part or component or elemnts to render  this array will handles that logic
-  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3","S_E4"]);
+  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3","S_E4","S_E5","S_E6","S_E7","S_E8"]);
 
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
@@ -43,20 +44,12 @@ function App() {
   // testing effect
   // useEffect(() => {
   //   const firstTimeout = setTimeout(() => {
-  //     setActivestate(false);
-  //     console.log("first");
-  //   }, 2000);
-  
-  //   const secondTimeout = setTimeout(() => {
-  //     setParentID("P1_WA_01");
-  //     setActivestate(true);
-  //     console.log("second");
-  //   }, 4000);
-  
+  //     setArrChildID(["S_E1","S_E2","S_E3","S_E4","S_E5","S_E6","S_E7","S_E8"])
+  //   }, 6000);
+    
   //   // Optional cleanup (good practice)
   //   return () => {
   //     clearTimeout(firstTimeout);
-  //     clearTimeout(secondTimeout);
   //   };
   // }, []); // 👈 runs only once on mount
   // console.log(ArrChildID)
@@ -79,8 +72,8 @@ function App() {
     }}
     >
       <AppContext.Provider value={PassContextValue} > 
-        <NikePage/>
-        {/* <ComponentHandler/> */}
+    
+        <ComponentHandler/>
        {location.pathname === "/Home" ? "" : <UserQueryHandler/>}
       </AppContext.Provider>
     </SnackbarProvider>
