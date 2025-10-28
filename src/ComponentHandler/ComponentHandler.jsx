@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Route,Routes } from 'react-router-dom'
 import WeatherHomeSection from "../Pages/WeatherHomePage/WeatherHome";
 import HomePage from "../Pages/HomePage/Homepage";
@@ -65,6 +65,8 @@ function UserQueryHandler() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   let {ParentID,ArrChildID,setParentID,setArrChildID,set_Fch_data} = useContext(AppContext);
+
+  let location = useLocation()
 
   const handleFormSubmit =async (e) => {
     e.preventDefault();
@@ -172,11 +174,6 @@ function UserQueryHandler() {
     </>
   );
 }
-function AissistanceReply({sty}){
-    return(
-        <>
-        </>
-    )
-}
 
-export {UserQueryHandler,AissistanceReply}
+ 
+export {UserQueryHandler,}

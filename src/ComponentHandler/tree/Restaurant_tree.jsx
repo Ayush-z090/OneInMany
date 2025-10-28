@@ -24,7 +24,7 @@ export default function RestaurantTreeHandlelr({Child_partID}){
 
     else if (Child_partID === "S_E3") ReturnElmnt = Object_tree.P1_RA_S1.S_E3()
 
-    else if (Child_partID === "S_E4") ReturnElmnt = Object_tree.P1_RA_S1.S_E4()
+    else if (Child_partID === "S_E4") ReturnElmnt = Object_tree.P1_RA_S2.S_E4()
 
 
     return ReturnElmnt;
