@@ -15,35 +15,6 @@ import Nike from "../Pages/NikeShoePage/Nike.jsx";
 
 export default function ComponentHandler(){
 
-    let navigate = useNavigate();
-    let {ParentID,setArrChildID} = useContext(AppContext);
-
-    useEffect(()=>{
-
-        switch(ParentID){
-            case "P1_WA_01" :{ // weatherApp
-                navigate("/weather");
-                return;
-            }
-            case "P1_HM_02" : { // homepage
-                navigate("/Home");
-                return;
-            }
-            case "P1_RA_03":{ // restaurant page
-                navigate("/NearBytaste");
-                return;
-            }
-            case "P1_NS_04" :{
-              navigate("/NikeShoes");
-              return;
-
-            }
-            
-        }
-    
-    },[ParentID])
-
-
     return(
         <>
 
@@ -65,10 +36,12 @@ function UserQueryHandler() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   let {ParentID,ArrChildID,setParentID,setArrChildID,set_Fch_data} = useContext(AppContext);
+  let {setActivestate} = useContext(AppContext)
 
   let location = useLocation()
 
   const handleFormSubmit =async (e) => {
+    setActivestate(true)
     e.preventDefault();
     enqueueSnackbar("thinking...");
     // setOpen(false);
@@ -87,7 +60,7 @@ function UserQueryHandler() {
     set_Fch_data(fetch_data.data)
     setParentID(fetch_data.pageID)
     // console.log(fetch_data?.data.message)
-    enqueueSnackbar(fetch_data?.data.message);
+    enqueueSnackbar(fetch_data?.data?.message ?? "running  well ");
     console.log(fetch_data)
   };
 
@@ -99,7 +72,7 @@ function UserQueryHandler() {
         position: "fixed",
         bottom: 24,
         right: 24,
-        zIndex: 1500,
+        zIndex: 10,
       }}
     >
       <AnimatePresence mode="wait">

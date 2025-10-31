@@ -38,20 +38,20 @@ const Header = () => {
         layout
         {...slideFade(time,is_E2,delayArr[1])}
         key={"comp_2"}
-        className=' w-full h-fit box-border px-[14rem] pb-12'>
+        className=' w-full h-fit box-border !px-[14rem] !pb-12'>
             <div className='flex ' aria-label='heading-mid'>
-                <div className='w-[50%] mt-20' aria-label='heading-part' >
+                <div className='w-[50%] !mt-20' aria-label='heading-part' >
                     <h1 className='text-[6rem] text-text-01 uppercase font-bold leading-normal'>
                         Comfort 
                         <p className='text-[4rem] font-semibold text-white'>awaits everyday</p>
                     </h1>
-                    <Button className='bg-text-02 text-black px-[4rem] py-4 text-lg mt-[4rem]'>shop Now</Button>
+                    <Button className='bg-text-02 text-black !px-[4rem] !py-4 text-lg !mt-[4rem]'>shop Now</Button>
                 </div>
                 <div className='realtive w-[50%] h-full scale-100 rotate-12' aria-label='shoe-img'>
                     <img src={Shoe_0_Logo} alt="" />
                 </div>
             </div> 
-            <div className='flex box-border pt-4 pb-4 mt-16 gap-7 ' aria-label='shoe cards'>
+            <div className='flex box-border !pt-4 !pb-4 !mt-16 gap-7 ' aria-label='shoe cards'>
                 {shoeCards.map(card=><ShoeCard image={card.image} price={card.price} name={card.name} key={card.id}/>)}
             </div>
         </motion.div>
@@ -66,14 +66,14 @@ function ShoeCard({image,price,name , bgColor,width,height}){
     return(
         <>
             <div 
-            className={`${!width ? "w-[14.5rem]" : width } ${height ? height : "h-32"} ${bgColor ? bgColor : "bg-bg-2"} relative box-border pt-16 text-lg rounded-2xl `}>
+            className={`${!width ? "w-[14.5rem]" : width } ${height ? height : "h-32"} ${bgColor ? bgColor : "bg-bg-2"} relative box-border !pt-16 text-lg rounded-2xl `}>
                 <img 
                 className='absolute w-36 h-36 top-[-5rem] lef-[50%] right-[50%] translate-x-[50%] rotate-12 '
                 src={image} alt="" />
                 <p
                 className='capitalize text-center font-semibold text-[1rem]' >{name}</p>
 
-                <p className='capitalize text-text-02 text-center mt-2 font-bold'>${price}</p>
+                <p className='capitalize text-text-02 text-center !mt-2 font-bold'>${price}</p>
                 
             </div>
         </>

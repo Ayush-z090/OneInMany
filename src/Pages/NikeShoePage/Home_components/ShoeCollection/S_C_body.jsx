@@ -67,8 +67,8 @@ const S_C_body = () => {
         key={"comp_4"}
         layout
         className='text-black'>
-            <h1 className='text-center text-6xl capitalize font-semibold mt-8 mb-36'>Our best collection</h1>
-            <div className='flex flex-wrap gap-x-5 gap-y-20 pb-32 justify-center'>
+            <h1 className='text-center text-6xl capitalize font-semibold !mt-8 !mb-36'>Our best collection</h1>
+            <div className='flex flex-wrap gap-x-5 gap-y-20 !pb-32 justify-center'>
             {shoeCards.map(card=>
             <ShoeCard 
             image={card.image} 

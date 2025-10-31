@@ -1,11 +1,4 @@
 import React, { createContext, useContext } from 'react'
-import Navbar from './components/Navbar/Navbar'
-import Header from './components/Header/Header'
-import S_C_head from './components/ShoeCollection/S_C_head'
-import S_C_body from './components/ShoeCollection/S_C_body'
-import Info from './components/Info/Info'
-import {Feedback, FeedbackCard} from './components/feedback/Feedback'
-import Footer from './components/Footer/Footer'
 import { AppContext } from '../../App'
 import NikeTreeHandling from '../../ComponentHandler/tree/NIkePage_tree'
 import { delayTimer } from '../../JS_Scrips/Animate'
@@ -44,7 +37,7 @@ const Nike = () => {
 
         <div 
       style={!is_E3 && !is_E4 ? {display:"none"} : {}} 
-      className='bg-white px-[14rem]'>
+      className='bg-white !px-[14rem]'>
         {is_E3 ? <NikeTreeHandling Child_partID={"S_E3"}/> : ""}
         {is_E4 ? <NikeTreeHandling Child_partID={"S_E4"}/> : ""}
 
@@ -54,7 +47,7 @@ const Nike = () => {
 
       <div 
       style={!is_E6 && !is_E7 ? {display:"none"} : {}} 
-      className="bg-white px-[14rem]">
+      className="bg-white !px-[14rem]">
 
         {is_E6 ? <NikeTreeHandling Child_partID={"S_E6"}/> : ""}
         {is_E7 ? <NikeTreeHandling Child_partID={"S_E7"}/> : ""}

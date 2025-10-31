@@ -36,7 +36,7 @@ const S_C_head = () => {
         layout
         key={"comp_3"}
         {...slideFade(time,is_E3,delayArr[2])}
-        className='flex mt-18 gap-16 box-border text-black  py-[12rem]'
+        className='flex !mt-18 gap-16 box-border text-black  !py-[12rem]'
         aria-label='head-body'>
             <div className='w-[50%] flex flex-col gap-8 ' aria-label='heading-left-body'>
                 <h1 

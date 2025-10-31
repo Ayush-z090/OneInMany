@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import './App.css'
 import ComponentHandler, { UserQueryHandler } from './ComponentHandler/ComponentHandler'
 import BG_Img from "./assets/Bg.jpg"
@@ -6,6 +6,8 @@ import RestaurantPage from './Pages/RestaurantPage/RestaurantPage'
 import { SnackbarProvider } from 'notistack'
 import { useLocation } from 'react-router-dom'
 import NikePage from './Pages/NikeShoePage/Nike'
+import PageTransition from './PageTransition'
+import gsap from 'gsap'
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
@@ -29,6 +31,7 @@ function App() {
 
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
+
   
   const PassContextValue = {
     ParentID,
@@ -41,18 +44,6 @@ function App() {
     ,set_Fch_data
   }
 
-  // testing effect
-  // useEffect(() => {
-  //   const firstTimeout = setTimeout(() => {
-  //     setArrChildID(["S_E1","S_E2","S_E3","S_E4","S_E5","S_E6","S_E7","S_E8"])
-  //   }, 6000);
-    
-  //   // Optional cleanup (good practice)
-  //   return () => {
-  //     clearTimeout(firstTimeout);
-  //   };
-  // }, []); // 👈 runs only once on mount
-  // console.log(ArrChildID)
   return(
     <>
       { location.pathname === "/NearBytaste" ? "" : <img src={BG_Img} alt="" />}
@@ -72,9 +63,9 @@ function App() {
     }}
     >
       <AppContext.Provider value={PassContextValue} > 
-    
-        <ComponentHandler/>
-       {location.pathname === "/Home" ? "" : <UserQueryHandler/>}
+        <PageTransition/>
+        <ComponentHandler />
+       {location.pathname === "/Home" ? "" : <UserQueryHandler />}
       </AppContext.Provider>
     </SnackbarProvider>
     </>

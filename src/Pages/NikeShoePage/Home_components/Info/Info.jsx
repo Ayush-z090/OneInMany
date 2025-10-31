@@ -15,7 +15,7 @@ const Info = () => {
     key={"comp_5"}
     layout
     {...slideFade(time,is_E5,delayArr[4])}
-    className='flex mt-18 gap-16 box-border items-center justify-between px-[14rem] py-[6rem]'
+    className='flex !mt-18 gap-16 box-border items-center justify-between !px-[14rem] !py-[6rem]'
     aria-label='head-body'>
                 <img         
         className=' w-[30rem]'
@@ -27,7 +27,7 @@ const Info = () => {
             <p 
             className='font-normal text-xl w-[80%]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem similique cumque cum cupiditate saepe expedita delectus, tempore, excepturi nesciunt obcaecati libero culpa sequi doloremque alias ipsam, iusto distinctio iure quia.</p>
         <Button 
-        className='bg-text-02 text-black w-[13vw] flex gap-4 py-4 text-lg mt-[4rem] '>
+        className='bg-text-02 text-black w-[13vw] flex gap-4 !py-4 text-lg !mt-[4rem] '>
             shop Now 
             <img src={ArrowIcon} alt="" />
             </Button>

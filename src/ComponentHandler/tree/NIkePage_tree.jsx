@@ -1,12 +1,12 @@
 import React from 'react'
 // import Navbar from './components/Navbar/Navbar'
-import Header from '../../Pages/NikeShoePage/components/Header/Header'
-import S_C_head from '../../Pages/NikeShoePage/components/ShoeCollection/S_C_head'
-import S_C_body from '../../Pages/NikeShoePage/components/ShoeCollection/S_C_body'
-import Info from '../../Pages/NikeShoePage/components/Info/Info'
-import {Feedback, FeedbackCard} from '../../Pages/NikeShoePage/components/feedback/Feedback'
-import Footer from '../../Pages/NikeShoePage/components/Footer/Footer'
-import Navbar from '../../Pages/NikeShoePage/components/Navbar/Navbar'
+import Header from '../../Pages/NikeShoePage/Home_components/Header/Header'
+import S_C_head from '../../Pages/NikeShoePage/Home_components/ShoeCollection/S_C_head'
+import S_C_body from '../../Pages/NikeShoePage/Home_components/ShoeCollection/S_C_body'
+import Info from '../../Pages/NikeShoePage/Home_components/Info/Info'
+import {Feedback, FeedbackCard} from '../../Pages/NikeShoePage/Home_components/feedback/Feedback'
+import Footer from '../../Pages/NikeShoePage/Home_components/Footer/Footer'
+import Navbar from '../../Pages/NikeShoePage/Home_components/Navbar/Navbar'
 
 
 let Object_tree = {
