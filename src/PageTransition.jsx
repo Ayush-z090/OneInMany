@@ -9,7 +9,7 @@ const PageTransition = ({timeline}) => {
   const pageTransitionRef = useRef(null);
   const logoRef = useRef(null)
   let navigate = useNavigate();
-  let {ParentID,setArrChildID} = useContext(AppContext);
+  let {ParentID} = useContext(AppContext);
   // diplay to initial
   //  pageTransitionRef.current.style.display = "initial"
 
@@ -29,7 +29,6 @@ const PageTransition = ({timeline}) => {
 
     // create boxes
     if (Array.from(container.children).length === 1) {
-      console.log(Array.from(container.children).length)
       for (let i = 0; i < 15; i++) {
         const box = document.createElement("div");
         box.className = "w-[calc(100vw/15)] h-full bg-text-01 will-change-transform";

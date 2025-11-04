@@ -1,24 +1,24 @@
 import React, { useContext } from 'react'
 import shoeLogo from '../../assets/images/shoe8.svg'
 import { AnimatePresence, motion } from 'framer-motion'
-import { NikeContext } from '../../Nike'
+import { HomeNikeContext } from '../../Nike_page'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 
 const demoCardData = [
     {
-        id:1,
+        id:"SC1",
         icon :'',
         head:"Best quality shoe",
         body:"adipisicing elit. Fuga at, reiciendis temporibus assumenda id cum enim eius u"
     },
     {
-        id:2,
+        id:"SC2",
         icon :'',
         head:"Best quality shoe",
         body:"adipisicing elit. Fuga at, reiciendis temporibus assumenda id cum enim eius u"
     },
     {
-        id:3,
+        id:"SC3",
         icon :'',
         head:"Best quality shoe",
         body:"adipisicing elit. Fuga at, reiciendis temporibus assumenda id cum enim eius u"
@@ -27,7 +27,7 @@ const demoCardData = [
 
 const S_C_head = () => {
 
-    let {time,delayArr,is_E3} = useContext(NikeContext)
+    let {time,delayArr,is_E3} = useContext(HomeNikeContext)
 
 
   return (

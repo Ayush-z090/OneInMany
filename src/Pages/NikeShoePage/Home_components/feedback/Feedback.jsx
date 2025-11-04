@@ -5,14 +5,14 @@ import customer2Img from "../../assets/images/customer2.svg"
 import facebookIcon from "../../assets/icons/facebook.svg"
 import twitterIcon from "../../assets/icons/twitter.svg"
 import instagramIcon from "../../assets/icons/instagram.svg"
-import { NikeContext } from '../../Nike'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 import { AnimatePresence, motion } from 'framer-motion'
+import { HomeNikeContext } from '../../Nike_page'
 
 
 const Feedback = () => {
 
-    const {time,delayArr,is_E6}= useContext(NikeContext)
+    const {time,delayArr,is_E6}= useContext(HomeNikeContext)
 
   return (
     <AnimatePresence>
@@ -48,7 +48,7 @@ let Reviews = [
 
 const FeedbackCard=()=>{
 
-    const {time,delayArr,is_E7} = useContext(NikeContext)
+    const {time,delayArr,is_E7} = useContext(HomeNikeContext)
     let [rev_num,setReview_num] = useState(0)
     console.log(rev_num)
     return(

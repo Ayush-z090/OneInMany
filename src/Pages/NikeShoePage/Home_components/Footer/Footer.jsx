@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import nikeLogo from '../../assets/icons/nikeLogo.png'
 import { AnimatePresence, motion } from 'framer-motion'
-import { NikeContext } from '../../Nike'
+import { HomeNikeContext } from '../../Nike_page'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 
 
 const Footer = () => {
 
-  const {time,delayArr,is_E8} = useContext(NikeContext);
+  const {time,delayArr,is_E8} = useContext(HomeNikeContext);
 
   return (
     <AnimatePresence>

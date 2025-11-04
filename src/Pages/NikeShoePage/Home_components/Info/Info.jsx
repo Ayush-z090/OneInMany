@@ -3,11 +3,11 @@ import shoeLogo from "../../assets/images/shoe7.svg"
 import Button from "@mui/material/Button"
 import ArrowIcon from "../../assets/icons/arrow-right.svg"
 import { AnimatePresence, motion } from 'framer-motion'
-import { NikeContext } from '../../Nike'
+import { HomeNikeContext } from '../../Nike_page'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 
 const Info = () => {
-  let {time,delayArr,is_E5} = useContext(NikeContext)
+  let {time,delayArr,is_E5} = useContext(HomeNikeContext)
 
   return (
   <AnimatePresence>
@@ -27,7 +27,7 @@ const Info = () => {
             <p 
             className='font-normal text-xl w-[80%]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem similique cumque cum cupiditate saepe expedita delectus, tempore, excepturi nesciunt obcaecati libero culpa sequi doloremque alias ipsam, iusto distinctio iure quia.</p>
         <Button 
-        className='bg-text-02 text-black w-[13vw] flex gap-4 !py-4 text-lg !mt-[4rem] '>
+        className='!bg-text-02 text-black w-[13vw] flex gap-4 !py-4 text-lg !mt-[4rem] '>
             shop Now 
             <img src={ArrowIcon} alt="" />
             </Button>

@@ -2,63 +2,37 @@ import React, { useContext } from 'react'
 import { ShoeCard } from '../Header/Header'
 import Shoe_1_Logo from "../../assets/images/big-shoe1.png"
 import { AnimatePresence, motion } from 'framer-motion'
-import { NikeContext } from '../../Nike'
+import { HomeNikeContext } from '../../Nike_page'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 
 
 const shoeCards = [
     {
-        id:1,
+        id:"SC_1",
         name:"nike sports shoe",
         image:Shoe_1_Logo,
         price:340
     },
     {
-        id:2,
+        id:"SC_2",
         name:"nike air span",
         image:Shoe_1_Logo,
         price:540
-    },{
-        id:3,
+    },
+    {
+        id:"SC_3",
         name:"nike dunk shoe",
         image:Shoe_1_Logo,
         price:440
-    },{
-    id:1,
-    name:"nike sports shoe",
-    image:Shoe_1_Logo,
-    price:340
-},
-{
-    id:2,
-    name:"nike air span",
-    image:Shoe_1_Logo,
-    price:540
-},{
-    id:3,
-    name:"nike dunk shoe",
-    image:Shoe_1_Logo,
-    price:440
-},
-{
-    id:3,
-    name:"nike dunk shoe",
-    image:Shoe_1_Logo,
-    price:440
-},
-{
-    id:3,
-    name:"nike dunk shoe",
-    image:Shoe_1_Logo,
-    price:440
-}
+    },
+    
 ]
 
 
 
 const S_C_body = () => {
 
-    let {time,delayArr,is_E4} = useContext(NikeContext)
+    let {time,delayArr,is_E4} = useContext(HomeNikeContext)
 
   return (
     <AnimatePresence>

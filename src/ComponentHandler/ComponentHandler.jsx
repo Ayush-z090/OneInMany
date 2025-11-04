@@ -11,7 +11,9 @@ import  Fab from "@mui/material/Fab";
 import  Box from "@mui/material/Box";
 import { useSnackbar } from 'notistack';
 import {AI_Query} from "../JS_Scrips/AIQuery.js"
-import Nike from "../Pages/NikeShoePage/Nike.jsx";
+import Home_Nike from "../Pages/NikeShoePage/Home_Nike.jsx";
+import Product_Nike from "../Pages/NikeShoePage/Product_Nike.jsx";
+import Nike_page from "../Pages/NikeShoePage/Nike_page.jsx";
 
 export default function ComponentHandler(){
 
@@ -22,7 +24,10 @@ export default function ComponentHandler(){
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path='/weather' element={<WeatherHomeSection/>}/>
                 <Route path="/NearBytaste" element={<RestaurantPage/>}/>
-                <Route path="/NikeShoes" element={<Nike/>}/>
+                <Route path="/NikeShoes" element={<Nike_page/>}>
+                  <Route index element={<Home_Nike/>}/>
+                  <Route path="product" element={<Product_Nike/>}/>
+                </Route>
           </Routes>
 
             
@@ -55,13 +60,20 @@ function UserQueryHandler() {
       childIDs : ArrChildID
     }
 
-    let fetch_data = await AI_Query(userQueryData);
-    setArrChildID(fetch_data.elemntIDs)
-    set_Fch_data(fetch_data.data)
-    setParentID(fetch_data.pageID)
-    // console.log(fetch_data?.data.message)
-    enqueueSnackbar(fetch_data?.data?.message ?? "running  well ");
-    console.log(fetch_data)
+    try
+    {
+      let fetch_data = await AI_Query(userQueryData);
+      setArrChildID(fetch_data?.elemntIDs ?? ArrChildID)
+      set_Fch_data(fetch_data.data)
+      setParentID(fetch_data.pageID)
+      // console.log(fetch_data?.data.message)
+      enqueueSnackbar(fetch_data?.data?.message ?? "running  well ");
+
+    }
+    catch(e){
+      enqueueSnackbar("cant connect to ai right now");
+    }
+
   };
 
   return (

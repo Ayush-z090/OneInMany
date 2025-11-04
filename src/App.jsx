@@ -5,9 +5,12 @@ import BG_Img from "./assets/Bg.jpg"
 import RestaurantPage from './Pages/RestaurantPage/RestaurantPage'
 import { SnackbarProvider } from 'notistack'
 import { useLocation } from 'react-router-dom'
-import NikePage from './Pages/NikeShoePage/Nike'
+import NikePage from './Pages/NikeShoePage/Home_Nike'
 import PageTransition from './PageTransition'
 import gsap from 'gsap'
+import Product_Nike from './Pages/NikeShoePage/Product_Nike'
+import Nike_page from './Pages/NikeShoePage/Nike_page'
+import Home_Nike from './Pages/NikeShoePage/Home_Nike'
 // this Component will be foucesd on handling routes
 let AppContext = createContext()
 
@@ -27,7 +30,7 @@ function App() {
   let [ParentID ,setParentID] = useState("P1_HM_02");
 
   // as Ai will handle what part or component or elemnts to render  this array will handles that logic
-  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3","S_E4","S_E5","S_E6","S_E7","S_E8"]);
+  let [ArrChildID,setArrChildID] = useState(["S_E1","S_E2","S_E3","S_E4","S_E5","S_E6","S_E7","S_E8","S_E11","S_E12"]);
 
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
@@ -63,7 +66,7 @@ function App() {
     }}
     >
       <AppContext.Provider value={PassContextValue} > 
-        <PageTransition/>
+        {ParentID === "P_0" ? "" : <PageTransition/>}
         <ComponentHandler />
        {location.pathname === "/Home" ? "" : <UserQueryHandler />}
       </AppContext.Provider>

@@ -7,12 +7,15 @@ import Info from '../../Pages/NikeShoePage/Home_components/Info/Info'
 import {Feedback, FeedbackCard} from '../../Pages/NikeShoePage/Home_components/feedback/Feedback'
 import Footer from '../../Pages/NikeShoePage/Home_components/Footer/Footer'
 import Navbar from '../../Pages/NikeShoePage/Home_components/Navbar/Navbar'
+import ShoeFilterSidebar from '../../Pages/NikeShoePage/Product_components/ShoeFilterSidebar'
+import ProductCardGrid from '../../Pages/NikeShoePage/Product_components/ProductCardGrid'
 
 
 let Object_tree = {
     // P1 reprsent page1 , HM refers HOmepage ,S1 refers to section one and 0N (n -> 1,2,3...) represnt the elemnts
 
 P1_NS_S1 : {
+    // homepage
     S_E1 : ()=> <Navbar/>,
     S_E2 : ()=> <Header/>,
     S_E3 : ()=> <S_C_head/>,
@@ -20,8 +23,10 @@ P1_NS_S1 : {
     S_E5 : ()=> <Info/>,
     S_E6 : ()=> <Feedback/>,
     S_E7 : ()=> <FeedbackCard/>,
-    S_E8 : ()=> <Footer/>
-
+    S_E8 : ()=> <Footer/>,
+    // product page
+    S_E11 : () => <ShoeFilterSidebar/>,
+    S_E12 : () => <ProductCardGrid /> 
     }
 }
 
