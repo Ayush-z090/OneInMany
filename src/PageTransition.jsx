@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { path, svg } from "framer-motion/client";
@@ -9,11 +9,12 @@ const PageTransition = ({timeline}) => {
   const pageTransitionRef = useRef(null);
   const logoRef = useRef(null)
   let navigate = useNavigate();
-  let {ParentID} = useContext(AppContext);
+  let {ParentID,isWidthLimit} = useContext(AppContext);
+  let [numOfBoxes , setBoxes] = useState(5)
   // diplay to initial
   //  pageTransitionRef.current.style.display = "initial"
 
-  useLayoutEffect(() => {
+  useLayoutEffect(() => { 
     if (!pageTransitionRef.current || !logoRef.current) return;
 
     const svgPaths = logoRef.current.querySelectorAll("path");
@@ -26,16 +27,12 @@ const PageTransition = ({timeline}) => {
       path.style.strokeDashoffset = length;
     });
   
+    if(isWidthLimit){
 
-    // create boxes
-    if (Array.from(container.children).length === 1) {
-      for (let i = 0; i < 15; i++) {
-        const box = document.createElement("div");
-        box.className = "w-[calc(100vw/15)] h-full bg-text-01 will-change-transform";
-        container.appendChild(box);
-      }
     }
-  
+    // create boxes
+    boxCreater(container,5)
+
     const boxes = Array.from(container.children);
     gsap.set(boxes, { scaleX: 0, transformOrigin: "left" });
     gsap.set(container,
@@ -86,7 +83,7 @@ const PageTransition = ({timeline}) => {
     })
   
     return () => tl.kill();
-  }, [ParentID]);
+  }, [ParentID,isWidthLimit]);
   
 
   return (
@@ -131,5 +128,17 @@ const MySvgIcon = React.forwardRef(function MySvgIcon(_props, ref) {
   );
 });
 
+
+function boxCreater(container,num){
+  // create boxes
+  if (Array.from(container.children).length === 1) {
+    for (let i = 0; i < num; i++) {
+      const box = document.createElement("div");
+      box.className = `flex-grow h-full bg-text-01 will-change-transform`;
+      container.appendChild(box);
+    }
+  }
+  
+}
 
 export default PageTransition;

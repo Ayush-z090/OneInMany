@@ -5,6 +5,9 @@ import Shoe_1_Logo from "../../assets/images/big-shoe1.png"
 import { AnimatePresence, motion } from 'framer-motion'
 import { slideFade } from '../../../../JS_Scrips/Animate'
 import { HomeNikeContext } from '../../Nike_page'
+import "../../tailwind_utilites/Home_utility.css"
+import { AppContext } from '../../../../App'
+
 const shoeCards = [
     {
         id:1,
@@ -28,6 +31,7 @@ const shoeCards = [
 
 const Header = () => {
 
+    let {isWidthLimit} = useContext(AppContext)
     let {time,delayArr,is_E2} = useContext(HomeNikeContext)
 
 
@@ -37,20 +41,20 @@ const Header = () => {
         layout
         {...slideFade(time,is_E2,delayArr[1])}
         key={"comp_2"}
-        className=' w-full h-fit box-border !px-[14rem] !pb-12'>
-            <div className='flex ' aria-label='heading-mid'>
-                <div className='w-[50%] !mt-20' aria-label='heading-part' >
+        className=' w-full h-fit box-border !px-[10vw] !pb-12 mb-section-pd'>
+            <div className='flex mb-heading-parent' aria-label='heading-mid'>
+                <div className='w-[50%] !mt-20  mb-head-heading' aria-label='heading-part' >
                     <h1 className='text-[6rem] text-text-01 uppercase font-bold leading-normal'>
                         Comfort 
                         <p className='text-[4rem] font-semibold text-white'>awaits everyday</p>
                     </h1>
-                    <Button className='!bg-text-02 text-black !px-[4rem] !py-4 text-lg !mt-[4rem]'>shop Now</Button>
+                    <Button className='!bg-text-02 text-black !px-[4rem] !py-4 text-lg !mt-[4rem] mb-button'>shop Now</Button>
                 </div>
-                <div className='realtive w-[50%] h-full scale-100 rotate-12' aria-label='shoe-img'>
+                {isWidthLimit ? "" : <div className='realtive w-[50%] h-full scale-100 rotate-12' aria-label='shoe-img'>
                     <img src={Shoe_0_Logo} alt="" />
-                </div>
+                </div>}
             </div> 
-            <div className='flex box-border !pt-4 !pb-4 !mt-16 gap-7 ' aria-label='shoe cards'>
+            <div className='flex box-border !pt-4 !pb-4 !mt-16 gap-7 mb-shoe-card ' aria-label='shoe cards'>
                 {shoeCards.map(card=><ShoeCard image={card.image} price={card.price} name={card.name} key={card.id}/>)}
             </div>
         </motion.div>

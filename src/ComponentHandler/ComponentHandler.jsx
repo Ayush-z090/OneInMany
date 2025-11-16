@@ -43,7 +43,18 @@ function UserQueryHandler() {
   let {ParentID,ArrChildID,setParentID,setArrChildID,set_Fch_data} = useContext(AppContext);
   let {setActivestate} = useContext(AppContext)
 
-  let location = useLocation()
+  let location = useLocation();
+
+  let [isWidthLimit,setLimit] = useState(false)
+
+  useEffect(()=>{
+   
+   if(window.innerWidth < 700)  setLimit(true) ;
+ 
+   window.addEventListener('resize',()=>{
+     window.innerWidth < 700 ? setLimit(true) : setLimit(false)
+   })
+  },[]);
 
   const handleFormSubmit =async (e) => {
     setActivestate(true)
@@ -54,7 +65,6 @@ function UserQueryHandler() {
     if (query.trim().length === 0) return ;
 
     const userQueryData = {
-
       userQuery : query,
       elemntsID : ParentID,
       childIDs : ArrChildID
@@ -110,7 +120,7 @@ function UserQueryHandler() {
             onBlur={() => setOpen(false)} 
             onSubmit={handleFormSubmit}
             initial={{ width: ".3vw" }}
-            animate={{ width: "30vw" }}
+            animate={{ width: isWidthLimit ? "78vw" : "30vw" }}
             exit={{ width: 5 }}
             transition={{ duration: 0.3 }}
             className={Styles.form}

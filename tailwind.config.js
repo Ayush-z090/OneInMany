@@ -25,6 +25,13 @@ export default {
         'inter': ['Inter', 'system-ui'],
         'pop': ["poppins", "san-serif"]
       },
+      screens: {
+        'max700': {'max': '700px'}, // 👈 add this
+        // keep the defaults too
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+      },
     },
   },
   plugins: [],

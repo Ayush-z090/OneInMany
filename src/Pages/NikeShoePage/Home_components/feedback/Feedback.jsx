@@ -8,6 +8,7 @@ import instagramIcon from "../../assets/icons/instagram.svg"
 import { slideFade } from '../../../../JS_Scrips/Animate'
 import { AnimatePresence, motion } from 'framer-motion'
 import { HomeNikeContext } from '../../Nike_page'
+import { AppContext } from '../../../../App'
 
 
 const Feedback = () => {
@@ -49,7 +50,9 @@ let Reviews = [
 const FeedbackCard=()=>{
 
     const {time,delayArr,is_E7} = useContext(HomeNikeContext)
-    let [rev_num,setReview_num] = useState(0)
+    let [rev_num,setReview_num] = useState(0);
+    let {isWidthLimit} = useContext(AppContext);
+
     console.log(rev_num)
     return(
     <AnimatePresence>
@@ -59,7 +62,7 @@ const FeedbackCard=()=>{
         {...slideFade(time,is_E7,delayArr[6])}
         className="bg-white w-[95%] flex !pb-10">
             {/* Left Section - Text Content */}
-            <div className="flex-1 !p-16 flex flex-col justify-between">
+            <div className="flex-1 !p-16 flex flex-col justify-between md-left">
                 {/* Top Section */}
                 <div className="flex justify-between items-start !mb-8">
                     <div>
@@ -82,14 +85,14 @@ const FeedbackCard=()=>{
                 {/* Main Content */}
                 <div className="flex-1 flex items-center">
                     <div className="flex items-start">
-                        <div className="text-6xl text-gray-300 font-serif !mr-6 leading-none">"</div>
-                        <div>
+                        {isWidthLimit ? "" : <div className="text-6xl text-gray-300 font-serif !mr-6 leading-none">"</div>}
+                        <div className='md-containerFeedback'>
                             <h1 className="text-4xl font-bold text-black leading-tight !mb-6 max-w-lg">
                                 {Reviews[rev_num].h1}
                             </h1>
-                            <p className="text-lg text-gray-700 leading-relaxed max-w-lg">
+                            {isWidthLimit ? <Img_ Img={Reviews[rev_num]}/> : (<p className="text-lg text-gray-700 leading-relaxed max-w-lg">
                                 {Reviews[rev_num].p}
-                            </p>
+                            </p>)}
                         </div>
                     </div>
                 </div>
@@ -117,19 +120,26 @@ const FeedbackCard=()=>{
             </div>
 
             {/* Right Section - Image */}
-            <div className="flex-1 relative">
+            {isWidthLimit ? "" : <Img_ Img={Reviews[rev_num]}/>}
+        </motion.div>
+        </AnimatePresence>
+    )
+}
+
+const Img_ = ({Img})=>{
+    return <>
+                <div className="flex-1 relative md-feedbackImg">
                 <div className="absolute top-0 left-0 w-full h-full bg-red-500 opacity-10"></div>
                 <div className="absolute bottom-0 left-0 w-full h-2 bg-red-500"></div>
                 <div className="absolute top-0 left-0 w-full h-2 bg-red-500"></div>
                 <img 
-                    src={Reviews[rev_num].img} 
+                    src={Img.img} 
                     alt="Customer testimonial" 
                     className="w-full h-full object-cover"
                 />
             </div>
-        </motion.div>
-        </AnimatePresence>
-    )
+
+    </>
 }
 
 export  {Feedback, FeedbackCard}

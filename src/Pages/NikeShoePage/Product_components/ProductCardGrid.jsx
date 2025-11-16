@@ -23,7 +23,7 @@ const DEFAULT_PRODUCTS = [
 
 export default function ProductCardGrid({ products = DEFAULT_PRODUCTS }) {
   return (
-    <section className='w-full box-border !px-6 !py-8'>
+    <section className='w-full box-border !px-6 !py-8 md-shoe-card'>
       <div className='!mb-4'>
         <h2 className='text-6xl font-semibold text-text-01'>Men's Shoes</h2>
         <p className='text-gray-600 text-lg'>Showing {products.length} products</p>

@@ -10,7 +10,7 @@ let RestaurantContext = createContext()
 
 export default function RestaurantPage() {
 
-  let {ArrChildID,isActive} = useContext(AppContext);
+  let {ArrChildID} = useContext(AppContext);
   let [time,setTime] = useState(3)
   let [is_E1,is_E2,is_E3,is_E4] = [ArrChildID?.includes("S_E1"),ArrChildID?.includes("S_E2"),ArrChildID?.includes("S_E3"),ArrChildID?.includes("S_E4")];
   let [delayArr,setDelayArr] = useState(delayTimer([is_E1,is_E2,is_E3,is_E4]))

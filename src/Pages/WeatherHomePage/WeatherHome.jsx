@@ -31,7 +31,12 @@ let hookVals = {
   units,setUnits,weather,setWeather,location,setLocation,astro,setAstro,time,delayArr,is_E1,is_E2,is_E3
 }
 
+
+
+
 useEffect(()=>{
+
+  
 
       Weather_Fetch({location:location.name,apiPath:"forecast.json",ExtraParamStr:"&hours=6"}).then(res=> 
           {

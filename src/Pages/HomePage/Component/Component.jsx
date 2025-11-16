@@ -8,7 +8,6 @@ import { HomepageContext } from "../Homepage";
 
 function Hero() {
 
-  let {isActive} = useContext(AppContext)
   let {time,delayArr,is_E1} = useContext(HomepageContext)
 
   return (
@@ -16,7 +15,7 @@ function Hero() {
     <motion.div 
     key={"comp_1"}
     layout
-    {...slideFade(time,is_E1 && isActive,delayArr[0])} className={styles.hero}>
+    {...slideFade(time,is_E1,delayArr[0])} className={styles.hero}>
       <h1 className={styles.heading}>Next-Gen AI Platform</h1>
       <p className={styles.subheading}>
         Control, speed, and accuracy — built for the future.
@@ -30,7 +29,6 @@ function Hero() {
 
 function FeatureCard({ title, desc }) {
 
-  let {isActive} = useContext(AppContext)
 
   let {time,delayArr,is_E2} = useContext(HomepageContext)
 
@@ -39,7 +37,7 @@ function FeatureCard({ title, desc }) {
       <motion.div
       layout
       key={"comp_2"}
-      {...slideFade(time,is_E2 &&  isActive ,delayArr[1])} className={styles.card}>
+      {...slideFade(time,is_E2,delayArr[1])} className={styles.card}>
         <h3>{title}</h3>
         <p>{desc}</p>
       </motion.div>

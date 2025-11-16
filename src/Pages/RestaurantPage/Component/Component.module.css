@@ -181,7 +181,7 @@
     display: flex;
     font-family: poppins;
     flex-direction: column;
-    width: clamp(20rem , 30vw ,34rem ) !important;
+    width: clamp(20rem , 30vw ,34rem ) ;
     background-color: var(--color-Res-secondary) !important;
     box-sizing: border-box;
     padding: 1.8dvh 1vw;

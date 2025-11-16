@@ -2,6 +2,8 @@
 
 const navigater= (id,nav_fun)=>{
 
+    localStorage.setItem("current_Page_id",id)
+
     switch(id){
 
         case "P1_WA_01" :{ // weatherApp

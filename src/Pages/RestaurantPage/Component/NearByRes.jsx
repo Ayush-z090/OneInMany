@@ -39,7 +39,7 @@ const skeletonData = {
 export default function NearbyRes(){
 
   // global fetch data
-    let {fch_data} = useContext(AppContext)
+    let {fch_data,isWidthLimit} = useContext(AppContext)
     // aniamtion time , animaion delay arr , is this elemnt should render is_E4 ...
     let {time,delayArr,is_E4} = useContext(RestaurantContext)
     // hook to select opt
@@ -52,6 +52,8 @@ export default function NearbyRes(){
     const [rating, setRating] = useState("");
     // hook to check the range of places
     const [distance, setDistance] = useState(5);
+
+    
 
 
     useEffect(()=>
@@ -71,13 +73,23 @@ export default function NearbyRes(){
         component={motion.div} 
         className={styles.Res_comp}>
             <Box
+            sx={isWidthLimit ? 
+              {
+                flexDirection:"column",
+                gap:".7rem"
+              } : {}}
             className={styles.search_Fiter_box}
             >
-                <DropDownButton selectedOpt={selectedOpt} setOption={setOption}/>
+                {isWidthLimit ? "" : <DropDownButton selectedOpt={selectedOpt} setOption={setOption}/>}
                 <FilterOptions rating={rating} setRating={setRating} setDistance={setDistance} distance={distance}/>
 
-                <Divider orientation="vertical" flexItem />
+                <Divider orientation="horizontal" flexItem />
                 <TextField 
+                style={isWidthLimit ?
+                  {
+                    width:"20rem"
+                  }
+                : {}}
                 className={styles.input_Field} 
                 label="Search" 
                 variant="outlined"
@@ -102,6 +114,12 @@ export default function NearbyRes(){
 
             </Box>
             <Box
+
+            style={isWidthLimit ?
+              {
+                padding:"1rem .5rem"
+              }
+            : {}}
             component={motion.div}
             className={styles.nearbyRes}>
                 {
@@ -137,12 +155,21 @@ export default function NearbyRes(){
 
 
 function CardBox({data}){
+
+  let {isWidthLimit} = useContext(AppContext)
     return(
         <>
             <Box 
             className={styles.cardBox}
             component={"div"}>
-                <div className={styles.Res_Img}>
+                <div 
+                style={isWidthLimit ?
+                  {
+                    width:"100%",
+                    height:"16rem"
+                  }
+                : {}}
+                className={styles.Res_Img}>
                     {typeof data.image === "string" ? <img className={styles.Img_} src={data.image} alt="" /> : data.image}
                 </div>
                 <Box
@@ -167,7 +194,16 @@ function CardBox({data}){
                     <p id="address">
                         {data.address}
                     </p>
-                    <p id="distance">
+                    <p
+                    style={isWidthLimit ?
+                      {
+                        padding:".2rem .5rem",
+                        lineHeight:1,
+                        fontSize:".89rem",
+                        widows:"2.4rem"
+                      }
+                    : {}}
+                    id="distance">
                         {data.distance}
                     </p>
                 </div>
@@ -228,17 +264,17 @@ function skeleton_CollectionCard(limit){
 
 
 function FilterOptions({rating,setRating,distance,setDistance}) {
+  let {isWidthLimit} = useContext(AppContext)
   
     return (
       <Box
         sx={{
           display: "flex",
           gap: 1,
-          alignItems: "center",
           backgroundColor: "#ffe5cc", // parent background
           borderRadius: "12px",
           flexDirection:"column",
-          alignItems:"self-start",
+          alignItems:"flex-start",
           lineHeight:1,
         }}
       >
@@ -290,8 +326,18 @@ function FilterOptions({rating,setRating,distance,setDistance}) {
               },
             }}
           >
-            <ToggleButton value="4+">4+</ToggleButton>
-            <ToggleButton value="5+">5+</ToggleButton>
+            <ToggleButton
+            style={isWidthLimit ? 
+              {
+                fontSize:".9rem",
+                padding:"1px 5px"} : {}}
+            value="4+">4+</ToggleButton>
+            <ToggleButton
+            style={isWidthLimit ? 
+              {
+                fontSize:".9rem",
+                padding:"1px 5px"} : {}}
+            value="5+">5+</ToggleButton>
           </ToggleButtonGroup>
         </Box>
   
@@ -341,10 +387,34 @@ function FilterOptions({rating,setRating,distance,setDistance}) {
               },
             }}
           >
-            <ToggleButton value={1}>1 km</ToggleButton>
-            <ToggleButton value={2}>2 km</ToggleButton>
-            <ToggleButton value={5}>5 km</ToggleButton>
-            <ToggleButton value={10}>10 km</ToggleButton>
+            <ToggleButton
+            style={isWidthLimit ? 
+              {
+                padding:"2px 4px"
+              }
+            : {}}
+            value={1}>1km</ToggleButton>
+            <ToggleButton 
+            style={isWidthLimit ? 
+              {
+                padding:"2px 4px"
+              }
+            : {}}
+            value={2}>2km</ToggleButton>
+            <ToggleButton 
+            style={isWidthLimit ? 
+              {
+                padding:"2px 4px"
+              }
+            : {}}
+            value={5}>5km</ToggleButton>
+            <ToggleButton 
+            style={isWidthLimit ? 
+              {
+                padding:"2px 4px"
+              }
+            : {}}
+            value={10}>10km</ToggleButton>
           </ToggleButtonGroup>
         </Box>
       </Box>

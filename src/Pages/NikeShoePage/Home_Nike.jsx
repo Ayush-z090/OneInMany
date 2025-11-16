@@ -16,7 +16,7 @@ const Home_Nike = () => {
 
         <div 
       style={!is_E3 && !is_E4 ? {display:"none"} : {}} 
-      className='bg-white !px-[14rem]'>
+      className='bg-white !px-[10vw] mb-section-pd'>
         {is_E3 ? <NikeTreeHandling Child_partID={"S_E3"}/> : ""}
         {is_E4 ? <NikeTreeHandling Child_partID={"S_E4"}/> : ""}
 
@@ -26,7 +26,7 @@ const Home_Nike = () => {
 
       <div 
       style={!is_E6 && !is_E7 ? {display:"none"} : {}} 
-      className="bg-white !px-[14rem]">
+      className="bg-white !px-[10vw] mb-section-pd">
 
         {is_E6 ? <NikeTreeHandling Child_partID={"S_E6"}/> : ""}
         {is_E7 ? <NikeTreeHandling Child_partID={"S_E7"}/> : ""}

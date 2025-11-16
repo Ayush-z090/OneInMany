@@ -1,0 +1,138 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+    .tester{
+        @apply bg-red-700 font-bold;
+    }
+}
+
+@layer utilities {
+    /* Applies when screen width is below 700px */
+    /* navbar utlitiy */
+    @media (max-width: 700px) {
+
+      .mb-size-link {
+        @apply text-[1rem] !px-5 cursor-pointer hover:bg-slate-600 hover:text-white !py-2 ;
+      }
+      
+      .mb-nav-body{
+        @apply !px-[2rem] !py-4
+      }
+
+      .mb-nav-img{
+        @apply rounded-[50%] overflow-hidden w-[2rem] h-[2rem]
+      }
+      
+      .mb-nab-link-parrent{
+        @apply justify-normal
+      }
+
+      .mb-section-pd{
+        @apply !px-6
+      }
+      
+    }
+
+    /* headsection utility */
+    @media (max-width: 700px) {
+
+        .mb-heading-parent{
+            @apply block
+        }
+        
+        .mb-head-heading{
+          @apply w-full text-4xl !mt-4
+        }
+        .mb-head-heading h1{
+          @apply text-[3.4rem] 
+        }
+        .mb-head-heading p{
+          @apply text-xl
+        }
+
+        .mb-button{
+            @apply aspect-auto !px-4 !py-3 text-[1rem] !mt-4
+        }
+
+        .mb-shoe-card{
+            @apply flex-wrap justify-center gap-y-9  gap-y-[5rem]      }
+      }
+      
+    /* sc_head section */
+
+    @media (max-width: 700px) {
+      .md-head-body{
+        @apply !py-20 flex-col
+      }
+
+      .md-head-left{
+        @apply w-full gap-0 flex-row justify-center gap-0
+      }
+
+      .md-head-left h1 {
+        @apply text-[2.6rem]
+      }
+      .md-head-left img{
+        @apply scale-50 w-[10rem] h-[10rem]
+      }
+    }
+  
+    /* info section */
+
+    @media (max-width: 700px) {
+      .md-infoHead-left{
+        @apply w-full
+      }
+
+      .md-infoHead-left button {
+        @apply w-[10rem] !mt-6
+      }
+    }
+
+    /* feedback section */
+
+    @media (max-width: 700px) {
+      .md-left{
+        @apply !p-0
+      }
+
+      .md-feedbackImg{
+        @apply w-[12rem] h-[12rem]
+      }
+
+      .md-containerFeedback{
+        @apply flex flex-col-reverse items-center w-full
+
+      }
+
+      .md-containerFeedback h1{
+        @apply text-xl !pt-5 h-[5rem]
+      }
+
+
+
+    }
+
+    /* prohct section  */
+
+    @media (max-width: 700px) {
+      .md-shoe-card{
+        @apply !p-0
+      }
+
+      .md-shoe-card h2{
+        @apply text-center text-4xl
+      }
+    }
+
+    @media (min-width : 700px) {
+        .desktop-size-link{
+            @apply cursor-pointer !px-5 !py-2 hover:bg-white hover:text-black hover:rounded-md transition-all duration-300;
+        }
+    }
+  }
+  

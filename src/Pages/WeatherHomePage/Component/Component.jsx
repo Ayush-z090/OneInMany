@@ -8,9 +8,8 @@ import { WeatherContext } from "../WeatherHome";
 
 
 function Navbar({ location, units, setUnits }) {
-  let {isActive} = useContext(AppContext)
-  let {time,delayArr,is_E1  } = useContext(WeatherContext)
-
+  let {isWidthLimit} = useContext(AppContext)
+  let {time,delayArr,is_E1 } = useContext(WeatherContext)
     return (
       <AnimatePresence>
         <motion.header
@@ -41,7 +40,7 @@ function Navbar({ location, units, setUnits }) {
               <span>{location.name}</span>
             </div>
     
-            <div className={styles.unitToggle}>
+            {isWidthLimit ? "" :(<div className={styles.unitToggle}>
               <button
                 className={`${styles.unitBtn} ${units === "C" ? styles.active : ""}`}
                 onClick={() => setUnits("C")}
@@ -56,7 +55,7 @@ function Navbar({ location, units, setUnits }) {
               >
                 °F
               </button>
-            </div>
+            </div>)}
           </div>
         </motion.header>
         </AnimatePresence>
@@ -67,8 +66,8 @@ function Navbar({ location, units, setUnits }) {
 function SearchBox({ onSelectLocation = () => {} }) {
     const [q, setQ] = useState("");
     const suggestions = ["San Francisco", "New York", "Mumbai", "London", "Tokyo"];
-    let {isActive} = useContext(AppContext)
-    let {time,delayArr,  is_E2    } = useContext(WeatherContext)
+    let {isWidthLimit } = useContext(AppContext)
+    let {time,delayArr,  is_E2   } = useContext(WeatherContext)
 
 
 
@@ -85,14 +84,18 @@ function SearchBox({ onSelectLocation = () => {} }) {
           layout      
       {...slideFade(time,is_E2,delayArr[1])}
       className={styles.searchBox} onSubmit={submit}>
-        <div className={styles.searchInner}>
-          <input
+        <div 
+        className={styles.searchInner}>
+          <input 
+           style={isWidthLimit ? {padding:"12px 8px"} : {}}
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search city, e.g. Mumbai"
             aria-label="Search city"
           />
-          <button className={styles.searchBtn} aria-label="Search">Search</button>
+          <button 
+          style={isWidthLimit ? {padding:"4px 10px",fontSize:".86rem"} : {}}
+          className={styles.searchBtn} aria-label="Search">Search</button>
         </div>
   
         <div className={styles.suggest}>
@@ -140,8 +143,8 @@ function WeatherIcon({ name = "partly", size = 80 }) {
 function WeatherInfo({ weather, city, units = "C" }) {
     const t = units === "C" ? `${weather.temp}°C` : `${Math.round(weather.temp)}°F`;
     const feels = units === "C" ? `${weather.feels}°C` : `${Math.round(weather.feels)}°F`;
-    let {isActive} = useContext(AppContext)
-    let {time,delayArr,is_E2} = useContext(WeatherContext)
+    let {isWidthLimit} = useContext(AppContext)
+    let {time,delayArr,is_E2,} = useContext(WeatherContext)
 
 
     return (
@@ -157,7 +160,9 @@ function WeatherInfo({ weather, city, units = "C" }) {
             <div className={styles.cond}>{weather.condition}</div>
           </div>
   
-          <div className={styles.tempRow}>
+          <div 
+          style={isWidthLimit ? {flexWrap:"wrap"} : {}}
+          className={styles.tempRow}>
             <div className={styles.tempBig}>{t}</div>
             <div className={styles.smallInfo}>
               <div>Feels like {feels}</div>
@@ -184,7 +189,7 @@ function WeatherInfo({ weather, city, units = "C" }) {
 }
 
 function HourlyForecast({ hourly = [], units = "C" }) {
-  let {isActive} = useContext(AppContext)
+
   let {time,delayArr,is_E3} = useContext(WeatherContext)
 
     return (
@@ -227,7 +232,7 @@ function Card({ title, value, caption }) {
   }
   
 function Highlights({ weather ,astro }) {
-  let {isActive} = useContext(AppContext)
+
   let {time,delayArr,is_E3} = useContext(WeatherContext)
 
   return (

@@ -5,9 +5,11 @@ import ArrowIcon from "../../assets/icons/arrow-right.svg"
 import { AnimatePresence, motion } from 'framer-motion'
 import { HomeNikeContext } from '../../Nike_page'
 import { slideFade } from '../../../../JS_Scrips/Animate'
+import { AppContext } from '../../../../App'
 
 const Info = () => {
-  let {time,delayArr,is_E5} = useContext(HomeNikeContext)
+  let {time,delayArr,is_E5} = useContext(HomeNikeContext);
+  let {isWidthLimit} = useContext(AppContext);
 
   return (
   <AnimatePresence>
@@ -15,13 +17,13 @@ const Info = () => {
     key={"comp_5"}
     layout
     {...slideFade(time,is_E5,delayArr[4])}
-    className='flex !mt-18 gap-16 box-border items-center justify-between !px-[14rem] !py-[6rem]'
+    className='flex !mt-18 gap-16 box-border items-center justify-between !px-[10vw] !py-[6rem] mb-section-pd'
     aria-label='head-body'>
-                <img         
+                {isWidthLimit ? "" :<img         
         className=' w-[30rem]'
-        src={shoeLogo} alt="" />
+        src={shoeLogo} alt="" />}
 
-        <div className='w-[50%] flex flex-col gap-8 ' aria-label='heading-left-body'>
+        <div className='w-[50%] flex flex-col gap-8  md-infoHead-left' aria-label='heading-left-body'>
             <h1 
             className='text-6xl capitalize font-semibold'>we provide high quality footwears</h1>
             <p 

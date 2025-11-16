@@ -21,6 +21,12 @@ let AppContext = createContext()
 // RA - Restaurant page - total elemt = 4
 // NS - Nike Shoe page - total elemt = 8
 
+let prevPage = (setPageId)=>{
+  if (!localStorage.getItem("current_Page_id")) localStorage.setItem("current_Page_id","");
+   
+}
+
+
 function App() {
   let location = useLocation()
   // this hook controls the strating and ending animation i.e in-out animation
@@ -35,6 +41,30 @@ function App() {
   // this hook helps to transfer the ai response to every part of the this app tree
   let [fch_data,set_Fch_data] = useState("");
 
+  // for css module style pages usage
+  let [isWidthLimit,setLimit] = useState(false);
+
+  useEffect(()=>
+    {
+      prevPage(setParentID,ParentID)
+    },[ParentID])
+
+  useEffect(()=>
+    {
+
+
+      if(window.innerWidth < 700)  setLimit(true) ;
+  
+      window.addEventListener('resize',()=>{
+        window.innerWidth < 700 ? setLimit(true) : setLimit(false)
+      });
+
+      window.addEventListener('load',()=>{
+        !localStorage.getItem("current_Page_id") ? "" : setParentID(localStorage.getItem("current_Page_id"))
+      })
+      
+    },[])
+
   
   const PassContextValue = {
     ParentID,
@@ -44,7 +74,7 @@ function App() {
     isActive,
     setActivestate,
     fch_data
-    ,set_Fch_data
+    ,set_Fch_data,isWidthLimit,setLimit
   }
 
   return(
